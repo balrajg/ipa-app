@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ipa;assembly=Ipa" x:Class="Ipa.ListSeperator">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="BoxViewStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="5" />
+        <Setter Property="BackgroundColor" Value="#FFFFFF" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentView.Content>
+    <StackLayout HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
+      <BoxView Style="{StaticResource BoxViewStyle}" />
+    </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ParticipantReportItemView">
+<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="AssPercentage" TargetType="Label">
+				<Setter Property="FontSize" Value="13" />
+				<Setter Property="TextColor" Value="#000000" />
+				<Setter Property="HorizontalTextAlignment" Value="End" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+      <Style x:Key="AssFinalPercentage" TargetType="Label">
+				<Setter Property="FontSize" Value="15" />
+				<Setter Property="TextColor" Value="#FFFFFF" />
+				<Setter Property="HorizontalTextAlignment" Value="End" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+			<Style x:Key="AssessmentList" TargetType="Label">
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="TextColor" Value="#FFFFFF" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+			<Style x:Key="Assessment" TargetType="StackLayout">
+				<Setter Property="Orientation" Value="Horizontal" />
+				<Setter Property="Padding" Value="20,10,20,10" />
+				<Setter Property="HeightRequest" Value="40" />
+			</Style>
+			<Style x:Key="FeedBackList" TargetType="StackLayout">
+				<Setter Property="VerticalOptions" Value="FillAndExpand" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="Padding" Value="10,0,0,0" />
+				<Setter Property="BackgroundColor" Value="#FFFFFF" />
+				<Setter Property="HeightRequest" Value="42" />
+			</Style>
+			<Style x:Key="AssName" TargetType="Label">
+				<Setter Property="FontSize" Value="13" />
+				<Setter Property="TextColor" Value="#6F6F6F" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+      <Style x:Key="AssNameLap" TargetType="Label">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="TextColor" Value="#FFFFFF" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+      </Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="FeedBacks" TargetType="Label">
+				<Setter Property="FontSize" Value="13" />
+				<Setter Property="TextColor" Value="#2D2D2D" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="VerticalOptions" Value="FillAndExpand" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+	</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+			<StackLayout HeightRequest="40" Spacing="0">
+			<StackLayout Padding="10,10,5,0">
+				<Label Text="OVERALL SUMMARY REPORT"  FontFamily="{x:Static local:Constants.FontStyle}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="12" VerticalTextAlignment="Center" />
+				<!--<StackLayout Padding="0,0,0,0">
+				<Label Text="L1 FEEDBACK" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" TextColor="#FFFFFF" FontSize="12" />
+				</StackLayout> -->
+				</StackLayout>
+        
+			</StackLayout>
+      <BoxView HeightRequest="1" BackgroundColor="#FFFFFF" HorizontalOptions="FillAndExpand"></BoxView>
+      <StackLayout>
+      </StackLayout>
+		<!--	<StackLayout Spacing="0">
+				<Grid RowSpacing="1" ColumnSpacing="1" x:Name="FeedBackScore">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<StackLayout Grid.Row="0" Grid.Column="0" Style="{StaticResource FeedBackList}">
+						<Label x:Name="CRScore" Text="{Binding CRScoreValue}" Style="{StaticResource FeedBacks}" />
+					</StackLayout>
+					<StackLayout Grid.Row="0" Grid.Column="1" Style="{StaticResource FeedBackList}">
+						<Label x:Name="DAScore" Text="{Binding DAScoreValue}" Style="{StaticResource FeedBacks}" />
+					</StackLayout>
+					<StackLayout Grid.Row="2" Grid.Column="0" Style="{StaticResource FeedBackList}">
+						<Label x:Name="EMPScore" Text="{Binding EMPScoreValue}" Style="{StaticResource FeedBacks}" />
+					</StackLayout>
+					<StackLayout Grid.Row="2" Grid.Column="1" Style="{StaticResource FeedBackList}">
+						<Label x:Name="FPScore" Text="{Binding FPScoreValue}" Style="{StaticResource FeedBacks}" />
+					</StackLayout>
+					<StackLayout Grid.Row="4" Grid.Column="0" Style="{StaticResource FeedBackList}">
+						<Label x:Name="OEScore" Text="{Binding OEScoreValue}" Style="{StaticResource FeedBacks}" />
+					</StackLayout>
+					<StackLayout Grid.Row="4" Grid.Column="1" Style="{StaticResource FeedBackList}">
+						<Label x:Name="Score6" Text="" Style="{StaticResource FeedBacks}" />
+					</StackLayout>
+				</Grid>
+			</StackLayout>-->
+			<StackLayout Padding="10,0,0,0" HeightRequest="42">
+				<Label Text="L2 BELIEF ASSESSMENT" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Style="{StaticResource AssessmentList}" VerticalTextAlignment="Center" />
+			</StackLayout>
+			<StackLayout BackgroundColor="White" Spacing="0">
+				<StackLayout Style="{StaticResource Assessment}">
+					<Label Text="Pre Belief" Style="{StaticResource AssName}" />
+					<Label Text="{Binding TotalBeliefPreScore}" Style="{StaticResource AssPercentage}" />
+				</StackLayout>
+				<StackLayout>
+					<BoxView Style="{StaticResource BoxViewStyle}" />
+				</StackLayout>
+				<StackLayout Style="{StaticResource Assessment}">
+					<Label Text="Post Belief" Style="{StaticResource AssName}" />
+					<Label Text="{Binding TotalBeliefPostScore}" Style="{StaticResource AssPercentage}" />
+				</StackLayout>
+				<StackLayout>
+					<BoxView Style="{StaticResource BoxViewStyle}" />
+				</StackLayout>
+				<StackLayout Style="{StaticResource Assessment}">
+					<Label Text="Absolute Change" Style="{StaticResource AssName}" />
+					<Label Text="{Binding L2OverallBeliefChange}" Style="{StaticResource AssPercentage}" />
+				</StackLayout>
+				<StackLayout>
+					<BoxView Style="{StaticResource BoxViewStyle}" />
+				</StackLayout>
+				<StackLayout Style="{StaticResource Assessment}">
+					<Label Text="Change on Potential" Style="{StaticResource AssName}" />
+					<Label Text="{Binding L2BChangeOnPotential}" Style="{StaticResource AssPercentage}" />
+				</StackLayout>
+			</StackLayout>
+			<StackLayout Padding="10,0,0,0" HeightRequest="42">
+				<Label Text="L2 SKILL ASSESSMENT" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Style="{StaticResource AssessmentList}" VerticalTextAlignment="Center" />
+			</StackLayout>
+			<StackLayout BackgroundColor="#FFFFFF" Spacing="0">
+				<StackLayout Style="{StaticResource Assessment}">
+					<Label Text="Pre Skill" Style="{StaticResource AssName}" />
+					<Label Text="{Binding L2TotalSkillPreScore}" Style="{StaticResource AssPercentage}" />
+				</StackLayout>
+				<StackLayout Spacing="0">
+					<BoxView Style="{StaticResource BoxViewStyle}" />
+				</StackLayout>
+				<StackLayout Style="{StaticResource Assessment}">
+					<Label Text="Post Skill" Style="{StaticResource AssName}" />
+					<Label Text="{Binding L2TotalSkillPostScore}" Style="{StaticResource AssPercentage}" />
+				</StackLayout>
+				<StackLayout>
+					<BoxView Style="{StaticResource BoxViewStyle}" />
+				</StackLayout>
+				<StackLayout Style="{StaticResource Assessment}">
+					<Label Text="Absolute Change" Style="{StaticResource AssName}" />
+					<Label Text="{Binding L2OverallSkillChange}" Style="{StaticResource AssPercentage}" />
+				</StackLayout>
+				<StackLayout>
+					<BoxView Style="{StaticResource BoxViewStyle}" />
+				</StackLayout>
+				<StackLayout Style="{StaticResource Assessment}">
+					<Label Text="Change on Potential" Style="{StaticResource AssName}" />
+					<Label Text="{Binding L2SChangeOnPotential}" Style="{StaticResource AssPercentage}" />
+				</StackLayout>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" Padding="20,10,20,10">
+				<Label Text="C@W SCORE" Style="{StaticResource AssNameLap}" />
+				<Label Text="{Binding LapScore}" Style="{StaticResource AssFinalPercentage}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

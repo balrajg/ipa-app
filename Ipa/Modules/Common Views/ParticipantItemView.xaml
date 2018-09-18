@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+x:Class="Ipa.ParticipantItemView"
+>
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="ProfileImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="30" />
+				<Setter Property="WidthRequest" Value="30" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="EmpName" TargetType="Label">
+				<Setter Property="TextColor" Value="#000000" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="13" />
+				<Setter Property="Font" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+			<Style x:Key="EmpId" TargetType="Label">
+				<Setter Property="TextColor" Value="#555555" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="11" />
+				<Setter Property="Font" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+				<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<OnPlatform x:TypeArguments="x:Double" Android="52" x:Key="HeaderRowHeight" />
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+    <StackLayout HorizontalOptions="FillAndExpand" Padding="10,5,10,5" BackgroundColor="#FFFFFF">
+	<StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#eae8e8" Spacing="8" Padding="10,7,0,7" HeightRequest="{StaticResource HeaderRowHeight}">
+		<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="10"  >
+			<ffimageloading:CachedImage x:Name="ProfileImage"  Style="{StaticResource ProfileImage}" />
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+				<Label x:Name="Name" Style="{StaticResource EmpName}" HorizontalOptions="FillAndExpand"/>
+				<Label x:Name="EmpId" Style="{StaticResource EmpId}" HorizontalOptions="FillAndExpand" />
+			</StackLayout>
+		</StackLayout>
+  </StackLayout>
+	</StackLayout>
+	</ContentView.Content>
+</ContentView>

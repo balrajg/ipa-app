@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:controls="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.MarkAttendanceItemView">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BtnText" TargetType="Label">
+				<Setter Property="TextColor" Value="#727272" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="13" />
+				<Setter Property="Font" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+
+			<Style x:Key="EmpName" TargetType="Label">
+				<Setter Property="TextColor" Value="#2D2D2D" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="Font" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+			<Style x:Key="EmpId" TargetType="Label">
+				<Setter Property="TextColor" Value="#B2B2B2" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="10" />
+				<Setter Property="Font" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="#FFFFFF">
+				<StackLayout BackgroundColor="#FFFFFF" Orientation="Horizontal" Spacing="0">
+					<StackLayout x:Name="AbsentLayout" HorizontalOptions="Start" Padding="5" MinimumWidthRequest="50" WidthRequest="50">
+						<Image x:Name="AbsentCheckBox" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" Source="absent_off.png"/>
+						<Label Text="Absent" x:Name="AbsentText" Style="{StaticResource BtnText}" HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation">
+						</Label>
+					</StackLayout>
+
+					<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="0,10,10,0">
+						<Label x:Name="Name" Style="{StaticResource EmpName}" HorizontalOptions="Center" LineBreakMode="TailTruncation" />
+						<Label x:Name="Id" Style="{StaticResource EmpId}" HorizontalOptions="Center" LineBreakMode="TailTruncation" />
+					</StackLayout>
+
+					<StackLayout x:Name="PresentLayout" HorizontalOptions="End" Padding="5" MinimumWidthRequest="50" WidthRequest="50">
+						<Image x:Name="PresentCheckBox" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" HorizontalOptions="CenterAndExpand" Source="present_off.png" />
+						<Label Text="Present" x:Name="PresentText" Style="{StaticResource BtnText}" HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation"></Label>
+					</StackLayout>
+
+				</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0">
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

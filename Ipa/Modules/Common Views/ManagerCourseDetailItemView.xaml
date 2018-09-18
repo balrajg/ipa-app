@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ManagerCourseDetailItemView">
+<ContentView.Resources>
+		<ResourceDictionary>
+		<OnPlatform x:TypeArguments="x:Int32" Android="58" iOS="52" x:Key="HeaderRowHeight" />
+						<OnPlatform x:TypeArguments="x:Int32" Android="60" iOS="56" x:Key="ActivityRowHeight" />
+			</ResourceDictionary>
+			</ContentView.Resources>
+
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0" HeightRequest="33" BackgroundColor="#485faa">
+				<Label Text="{Binding TotalReportee}" Font="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" FontSize="12" />
+			</StackLayout>
+			<ListView 
+				x:Name="ParticipantList" 
+				ItemsSource="{Binding ReporteeList}" 
+				SeparatorVisibility="None" 
+				SelectedItem="{Binding SelectedReportee, Mode=TwoWay}" 
+                RowHeight="{StaticResource HeaderRowHeight}"
+				BackgroundColor="White"
+				HorizontalOptions="FillAndExpand" 
+				VerticalOptions="Fill">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.View>
+								<local:ParticipantItemView ParticipantName="{Binding FullName}" ParticipantId="{Binding EmpId}" ParticipantSource="{Binding ProfileImage}" />
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0" HeightRequest="37" BackgroundColor="#485faa">
+				<Label Text="ASSESSMENT ACTIVITIES" Font="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" FontSize="12" />
+			</StackLayout>
+			<ListView 
+				x:Name="AssessmentActivityList" 
+				ItemsSource="{Binding ActivityCompletionList}" 
+				SelectedItem="{Binding SelectedActivity, Mode=TwoWay}" 
+				SeparatorVisibility="None"
+                RowHeight="{StaticResource ActivityRowHeight}"
+				BackgroundColor="White"
+				HorizontalOptions="FillAndExpand" 
+				VerticalOptions="Fill">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.View>
+								<local:AssessmentActivityItemView ActivityName="{Binding ActivityName}" PendingStatus="{Binding TotalPending}" OverdueStatus="{Binding TotalOverDue}" CompletedStatus="{Binding TotalCompleted}"  />
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

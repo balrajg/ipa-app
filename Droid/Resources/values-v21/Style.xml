@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+  <style name="MyTheme" parent="MyTheme.Base">
+    <!--If you are using MasterDetailPage you will want to set these, else you can leave them out-->
+    <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>-->
+  </style>
+  <style name="MyTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">
+      @drawable/SplashScreen
+      <item name="android:windowNoTitle">true</item>
+
+    </item>
+  </style>
+</resources>

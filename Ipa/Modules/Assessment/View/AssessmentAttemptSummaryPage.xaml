@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:local="clr-namespace:Ipa;assembly=Ipa"  
+x:Class="Ipa.AssessmentAttemptSummaryPage">
+<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="StatusImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="75" />
+				<Setter Property="WidthRequest" Value="74" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="CloseImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="16" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+	<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+		<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#485faa" Spacing="0">
+			<StackLayout HorizontalOptions="Start" HeightRequest="25" WidthRequest="20" Padding="15,15,10,10">
+			<Image Source="close.png" Style="{StaticResource CloseImage}" />
+			<StackLayout.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding CloseBtnCmd}" />
+						</StackLayout.GestureRecognizers>
+					</StackLayout>
+					<StackLayout HorizontalOptions="FillAndExpand" Padding="0,10,0,0">
+			<Label Text="{Binding ActivityName}" TextColor="#FFFFFF" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="18" />
+			</StackLayout>
+		</StackLayout>
+		</StackLayout>
+		<ScrollView Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="#FFFFFF">
+				<StackLayout HorizontalOptions="FillAndExpand" Padding="0,62,0,10">
+					<Image Source="success.png" Style="{StaticResource StatusImage}" />
+				</StackLayout>
+				<Label Text="Congrats!" TextColor="#2B91C1" FontSize="30" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+				<StackLayout HorizontalOptions="FillAndExpand" Padding="0,15,0,0">
+				<Label Text="You have Answered all the questions" TextColor="#2D2D2D" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+				</StackLayout>
+				<StackLayout HorizontalOptions="FillAndExpand" Padding="0,68,0,30">
+					<Button Text="SUBMIT" TextColor="#FFFFFF" Command="{Binding SubmitCmd}" FontFamily="{x:Static local:Constants.FontStyle}" BackgroundColor="#2B91C1" WidthRequest="178" BorderRadius="0" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="24" />
+				</StackLayout>
+				<Label Text="REVIEW ATTEMPT" HeightRequest="30" TextColor="#F5811E" FontSize="11" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+					<Label.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding ReviewCmd}" />
+					</Label.GestureRecognizers>
+				</Label>
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">
+							
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+</ContentPage.Content>
+</ContentPage>

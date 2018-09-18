@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:controls="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ManagerCourseDetailPage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BackArrowImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="9" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="StatusImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="11" />
+				<Setter Property="WidthRequest" Value="11" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" BackgroundColor="#EEEEEE">
+
+    <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+      <StackLayout Orientation="Horizontal"  BackgroundColor="#ef0f0f" HorizontalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+          <StackLayout HorizontalOptions="Start" Padding="10,10,5,10">
+            <StackLayout Orientation="Horizontal" HeightRequest="25" WidthRequest="70" BackgroundColor="#485faa">
+              <StackLayout HorizontalOptions="Start"  Padding="8,0,0,0" VerticalOptions ="Center">
+                <Image Source="back_arrow.png" Style="{StaticResource BackArrowImage}" />
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding BackBtnCmd}" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions ="Center" WidthRequest="50">
+                <Label Text="BACK" TextColor="#FFFFFF" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="14" />
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding BackBtnCmd}" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+            </StackLayout>
+          </StackLayout>
+          <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="30,0,10,0">
+            <Label Text="{Binding CourseFullName}" LineBreakMode="TailTruncation"  TextColor="#FFFFFF" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="14" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+              <Image Source="{Binding CourseSource}" Style="{StaticResource StatusImage}" />
+              <Label Text="{Binding CourseStatus}" TextColor="#FFFFFF" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="12" />
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+
+      </StackLayout>
+    </StackLayout>
+    
+    
+		<ScrollView Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" x:Name="CourseDetailView">
+				<StackLayout HorizontalOptions="Center">
+				<StackLayout.Padding>
+		<OnPlatform x:TypeArguments="Thickness" Android="25,15,0,10" iOS="10,15,10,10">
+		
+
+		</OnPlatform>
+		</StackLayout.Padding>
+					<controls:SegmentedControl HorizontalOptions="FillAndExpand" WidthRequest="320" HeightRequest="30" x:Name="SegmentCtrl" > 
+						<controls:SegmentedControl.Children>
+							<controls:SegmentedControlOption x:Name="CourseDetailOverview" Text="OVERVIEW"/>
+							<controls:SegmentedControlOption x:Name="CourseDetailAttendance" Text="ATTENDANCE" />
+						</controls:SegmentedControl.Children>
+					</controls:SegmentedControl>
+				</StackLayout>
+				<StackLayout Padding="0,0,0,10" VerticalOptions="FillAndExpand">
+					<local:ManagerCourseDetailItemView  IsVisible="{Binding IsOverView}"/>
+					<local:ManagerCourseDetailAttendanceItemView IsVisible="{Binding IsAttendance}" />
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

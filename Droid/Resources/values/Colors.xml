@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <color name="primary">#485faa</color>
+  <color name="primaryDark">#000000</color>
+  <color name="accent">#ff9907</color> 
+  <color name="window_background">#FFFFFF</color>
+    <color name="TabColor">#ef0f0f</color>
+  <color name="TabSelectedColor">#485faa</color>
+  <color name="RedColor">#ef0f0f</color>
+	<color name="notificationBgColor">#ff076e</color>
+
+  <color name="normal">#485faa</color>
+    <color name="light">#ffffff</color>
+    <color name="highlight">#485faa</color>
+
+    <color name="selected">@color/highlight</color>
+</resources>

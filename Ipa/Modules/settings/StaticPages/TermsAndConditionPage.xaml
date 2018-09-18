@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Ipa.TermsAndConditionPage">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="HeaderText" TargetType="Label">
+				<Setter Property="FontSize" Value="15"></Setter>
+				<Setter Property="FontAttributes" Value="Bold"></Setter>
+				<Setter Property="TextColor" Value="White"></Setter>
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}"></Setter>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+				<Setter Property="VerticalOptions" Value="FillAndExpand"></Setter>
+				<Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+			</Style>
+			<Style x:Key="BackArrowImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="9" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<StackLayout Spacing="0" VerticalOptions="FillAndExpand">
+	<!-- Navigation bar -->
+    <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+	<StackLayout Orientation="Horizontal"  BackgroundColor="#EF0F0F" HorizontalOptions="FillAndExpand">
+    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Padding="10,10,5,10">
+      <StackLayout HorizontalOptions="Start" Orientation="Horizontal" HeightRequest="25" WidthRequest="70" BackgroundColor="#485faa"  >
+        <StackLayout   Padding="8,0,0,0" VerticalOptions ="Center">
+					<Image Source="back_arrow.png" Style="{StaticResource BackArrowImage}" />
+					<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Command="{Binding LeftNavBtnCommand}" />
+					</StackLayout.GestureRecognizers>
+				</StackLayout>
+				<StackLayout HorizontalOptions="End" VerticalOptions ="Center" WidthRequest="50">
+					<Label Text="BACK" TextColor="#FFFFFF" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="14" />
+					<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Command="{Binding LeftNavBtnCommand}" />
+					</StackLayout.GestureRecognizers>
+				</StackLayout>
+			</StackLayout>
+        <StackLayout VerticalOptions="Center" Padding="30,0,10,0">
+				<Label Text="{Binding TitleText}" LineBreakMode="TailTruncation" TextColor="#FFFFFF" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="18" />
+			</StackLayout>
+		</StackLayout>
+	</StackLayout>
+</StackLayout>
+	<!-- Web Content -->
+			<WebView x:Name="Browser" VerticalOptions="FillAndExpand" Source="https://www.impact-enablers.com/terms-of-use.html">
+				
+			</WebView>
+		</StackLayout>
+	<!-- Loader -->
+		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+
+			<ActivityIndicator x:Name="Loader" HorizontalOptions= "FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}"  IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+				<ActivityIndicator.HorizontalOptions>
+					<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+				</ActivityIndicator.HorizontalOptions>
+				<ActivityIndicator.VerticalOptions>
+					<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+				</ActivityIndicator.VerticalOptions>
+			</ActivityIndicator>
+		</StackLayout>
+
+	</Grid>	
+	</ContentPage.Content>
+</ContentPage>

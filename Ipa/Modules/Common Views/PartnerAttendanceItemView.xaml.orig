@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Mentor;assembly=Mentor" 
+x:Class="Mentor.PartnerAttendanceItemView">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="AbsentImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="PresentImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#BDBDBD" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" HeightRequest="55">
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0" Padding="10,10,10,10" BackgroundColor="#FFFFFF" >
+				<StackLayout HorizontalOptions="FillAndExpand">
+					<Label x:Name="Day" Font="{x:Static local:Constants.FontStyle}" TextColor="#2D2D2D" VerticalTextAlignment="Center" FontSize="16" />
+					<Label x:Name="Date" Font="{x:Static local:Constants.FontStyle}" TextColor="#2D2D2D" VerticalTextAlignment="Center" FontSize="14" />
+				</StackLayout>
+				<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" WidthRequest="220">
+					<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+<<<<<<< HEAD
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="20" IsVisible="{Binding CanShowPresent}">
+							<Image Source="present.png" Style="{StaticResource PresentImage}" />
+							<Label x:Name="PresentCount" Font="{x:Static local:Constants.FontStyle}" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" TextColor="#777777" VerticalTextAlignment="Center" FontSize="13" />
+						</StackLayout>
+						<StackLayout Orientation="Horizontal" HeightRequest="20" HorizontalOptions="FillAndExpand" IsVisible="{Binding CanShowAbsent}">
+							<Image Source="absent.png" Style="{StaticResource AbsentImage}" />
+							<Label x:Name="AbsentCount" Font="{x:Static local:Constants.FontStyle}" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" TextColor="#777777" VerticalTextAlignment="Center" FontSize="13" />
+=======
+						<StackLayout x:Name="PresentContainer" Orientation="Horizontal" IsVisible="{Binding CanShowPresent}" BackgroundColor= "Teal">
+							<Image Source="present.png" Style="{StaticResource PresentImage}" >
+							<Image.Triggers>
+						        <DataTrigger TargetType="Image"
+						                     Binding="{Binding Source={x:Reference PresentContainer},
+						                                       Path=IsEnabled}"
+						                     Value="False">
+						            <Setter Property="IsVisible" Value="False" />
+						        </DataTrigger>
+						    </Image.Triggers>
+							</Image>
+							<Label x:Name="PresentCount" Font="{x:Static local:Constants.FontStyle}" TextColor="#777777" VerticalTextAlignment="Center" FontSize="13" >
+							<Label.Triggers>
+						        <DataTrigger TargetType="Label"
+						                     Binding="{Binding Source={x:Reference PresentContainer},
+						                                       Path=IsEnabled}"
+						                     Value="False">
+						            <Setter Property="IsVisible" Value="False" />
+						        </DataTrigger>
+						    </Label.Triggers>
+							</Label>
+						</StackLayout>
+						<StackLayout x:Name="AbsentContainer" Orientation="Horizontal" IsEnabled="{Binding CanShowAbsent}" HorizontalOptions="EndAndExpand" BackgroundColor="Aqua">
+							<Image Source="absent.png" Style="{StaticResource AbsentImage}" >
+							<Image.Triggers>
+						        <DataTrigger TargetType="Image"
+						                     Binding="{Binding Source={x:Reference AbsentContainer},
+						                                       Path=IsEnabled}"
+						                     Value="False">
+						            <Setter Property="IsVisible" Value="False" />
+						        </DataTrigger>
+						    </Image.Triggers>
+							</Image>
+							<Label x:Name="AbsentCount" Font="{x:Static local:Constants.FontStyle}" TextColor="#777777" VerticalTextAlignment="Center" FontSize="13" >
+							<Label.Triggers>
+						        <DataTrigger TargetType="Label"
+						                     Binding="{Binding Source={x:Reference AbsentContainer},
+						                                       Path=IsEnabled}"
+						                     Value="False">
+						            <Setter Property="IsVisible" Value="False" />
+						        </DataTrigger>
+						    </Label.Triggers>
+							</Label>
+>>>>>>> 8dc21f174b20cb47647356ede07e620f0071901e
+						</StackLayout>
+					</StackLayout>
+					<StackLayout WidthRequest="100" x:Name="MarkItLabel" VerticalOptions="End" IsVisible="false">
+						<Label Text="MARK IT NOW" FontAttributes="Bold"  VerticalTextAlignment="Center"  HorizontalOptions="End" Font="{x:Static local:Constants.FontStyle}" TextColor="#42C0FB" FontSize="13"/>
+						<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding MarkItNowCmd}" />
+						</StackLayout.GestureRecognizers>
+					</StackLayout>
+			</StackLayout>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0">
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

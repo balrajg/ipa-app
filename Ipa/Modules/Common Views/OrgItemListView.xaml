@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:Controls="clr-namespace:Ipa.Behaviors;assembly=Ipa" 
+x:Class="Ipa.OrgItemListView">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+<!--			<local:MultiTriggerConverter x:Key="dataHasBeenEntered" />-->
+			<Style x:Key="OrgInfo" TargetType="Entry">
+				<Setter Property="VerticalOptions" Value="Fill" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="FontSize" Value="14" />
+				<Setter Property="HeightRequest" Value="40" />
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="#FFFFFF">
+		<StackLayout HorizontalOptions="FillAndExpand" Padding="10,20,10,20" >
+			<local:MyEntry Placeholder="EMP ID" x:Name="id" Text="{Binding EmpId}" Keyboard="Text" Style="{StaticResource OrgInfo}">
+				<local:MyEntry.Behaviors>
+					<Controls:MaxLimitBehavior />
+				</local:MyEntry.Behaviors>
+			</local:MyEntry>
+			<BoxView Style="{StaticResource BoxViewStyle}" BackgroundColor="#485faa">
+			</BoxView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,10,20">
+			<local:MyEntry x:Name="OrgName" Placeholder="Organisation Name" Text="{Binding OrganizationName}" Keyboard="Text" Style="{StaticResource OrgInfo}">
+				<local:MyEntry.Behaviors>
+					<Controls:MaxLimitBehavior />
+				</local:MyEntry.Behaviors>
+			</local:MyEntry>
+			<BoxView Style="{StaticResource BoxViewStyle}" BackgroundColor="#485faa">
+<!--				<BoxView.Triggers>
+					<DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference OrgName},
+					Path=Text.Length, 
+					Converter={StaticResource dataHasBeenEntered}}" 
+					Value="true">
+						<Setter Property="BackgroundColor" Value="#BDBCBC" />
+					</DataTrigger>
+				</BoxView.Triggers>-->
+			</BoxView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,10,20">
+			<local:MyEntry Placeholder="Designation" x:Name="Designation" Keyboard="Text" Text="{Binding Designation}" Style="{StaticResource OrgInfo}">
+				<local:MyEntry.Behaviors>
+					<Controls:MaxLimitBehavior />
+				</local:MyEntry.Behaviors>
+			</local:MyEntry>
+			<BoxView Style="{StaticResource BoxViewStyle}" BackgroundColor="#485faa">
+			</BoxView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,10,20">
+			<local:MyEntry Placeholder="City/Town" x:Name="City" Keyboard="Text" Text="{Binding City}" HeightRequest="40" Style="{StaticResource OrgInfo}">
+				<local:MyEntry.Behaviors>
+					<Controls:MaxLimitBehavior />
+				</local:MyEntry.Behaviors>
+			</local:MyEntry>
+			<BoxView Style="{StaticResource BoxViewStyle}" BackgroundColor="#485faa">
+			</BoxView>
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

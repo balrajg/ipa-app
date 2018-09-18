@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{BA44BC6E-66B2-44C4-BCDC-9D6F58FE726C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Ipa.Droid</RootNamespace>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidApplication>True</AndroidApplication>
+    <AssemblyName>Ipa.Droid</AssemblyName>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <XamarinInsightsApiKey>3c50a63e79b19dee1227cf410f9af135c79a7724</XamarinInsightsApiKey>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
+    <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidSigningKeyStore>D:\balraj\App\Droid\KeyStore\ipa\ipa.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>ipa123</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>ipa</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>ipa123</AndroidSigningKeyPass>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <AndroidSigningKeyStore>/Users/hm/Downloads/mentor-d03ab0d0f9d04b6f9964a13eaa3eab56914bfd83-d03ab0d0f9d04b6f9964a13eaa3eab56914bfd83/Droid/Assets/KeyStore/mentor_release_key.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Ips</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>Ipa</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Ipa</AndroidSigningKeyPass>
+    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <Debugger>Xamarin</Debugger>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
+    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <Debugger>Xamarin</Debugger>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
+    <DebugSymbols>true</DebugSymbols>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CommonServiceLocator">
+      <Version>2.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomRenderer\ExtendedEntryRenderer.cs" />
+    <Compile Include="CustomRenderer\MyEditorRenderer.cs" />
+    <Compile Include="CustomRenderer\RoundedBoxViewRenderer.cs" />
+    <Compile Include="CustomRenderer\GalleryCarouselLayoutRenderer.cs" />
+    <Compile Include="CustomRenderer\SegmentedControlRenderer.cs" />
+    <Compile Include="MainApplication.cs" />
+    <Compile Include="CustomRenderer\CarouselLayoutRenderer.cs" />
+    <Compile Include="CustomRenderer\ChatRenderers\BubbleLabelRenderer.cs" />
+    <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
+    <Compile Include="SplashActivity.cs" />
+    <Compile Include="Dependancy Services\AndroidMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="packages.config" />
+    <None Include="PushNotificationStarted.txt" />
+    <None Include="KeyStore\ipa_release_key.keystore" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Ipa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.xml" />
+    <AndroidResource Include="Resources\layout\SegmentedControl.xml" />
+    <AndroidResource Include="Resources\values\Colors.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Style.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\Styles.xml" />
+    <AndroidResource Include="Resources\values\vpi__attrs.xml" />
+    <AndroidResource Include="Resources\values\vpi__defaults.xml" />
+    <AndroidResource Include="Resources\values\attrs.xml" />
+    <AndroidResource Include="Resources\values\themes.xml" />
+    <AndroidResource Include="Resources\values-v21\Style.xml" />
+    <AndroidResource Include="Resources\drawable\lap.png" />
+    <AndroidResource Include="Resources\drawable\logo_login.png" />
+    <AndroidResource Include="Resources\drawable\logo_settings.png" />
+    <AndroidResource Include="Resources\drawable\ongoing_header.png" />
+    <AndroidResource Include="Resources\drawable\ongoing.png" />
+    <AndroidResource Include="Resources\drawable\over_due.png" />
+    <AndroidResource Include="Resources\drawable\pending.png" />
+    <AndroidResource Include="Resources\drawable\present_off.png" />
+    <AndroidResource Include="Resources\drawable\present.png" />
+    <AndroidResource Include="Resources\drawable\prof.jpg" />
+    <AndroidResource Include="Resources\drawable\radio_off.png" />
+    <AndroidResource Include="Resources\drawable\radio_on.png" />
+    <AndroidResource Include="Resources\drawable\reportee.png" />
+    <AndroidResource Include="Resources\drawable\search.png" />
+    <AndroidResource Include="Resources\drawable\select.png" />
+    <AndroidResource Include="Resources\drawable\send.png" />
+    <AndroidResource Include="Resources\drawable\show_password.png" />
+    <AndroidResource Include="Resources\drawable\success.png" />
+    <AndroidResource Include="Resources\drawable\up_drop_down.png" />
+    <AndroidResource Include="Resources\drawable\segmented_control_background.xml" />
+    <AndroidResource Include="Resources\drawable\segmented_control_first_background.xml" />
+    <AndroidResource Include="Resources\drawable\segmented_control_last_background.xml" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\eye.png" />
+    <AndroidResource Include="Resources\drawable\absent_off.png" />
+    <AndroidResource Include="Resources\drawable\absent.png" />
+    <AndroidResource Include="Resources\drawable\add_user.png" />
+    <AndroidResource Include="Resources\drawable\arrow.png" />
+    <AndroidResource Include="Resources\drawable\attandance.png" />
+    <AndroidResource Include="Resources\drawable\back_arrow.png" />
+    <AndroidResource Include="Resources\drawable\checkbox_off.png" />
+    <AndroidResource Include="Resources\drawable\checkbox_selected.png" />
+    <AndroidResource Include="Resources\drawable\close_text.png" />
+    <AndroidResource Include="Resources\drawable\close.png" />
+    <AndroidResource Include="Resources\drawable\completed.png" />
+    <AndroidResource Include="Resources\drawable\drop_down.png" />
+    <AndroidResource Include="Resources\drawable\edit_profile.png" />
+    <AndroidResource Include="Resources\drawable\edit.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\eye.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\absent_off.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\absent.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\add_user.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\arrow.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\attandance.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\back_arrow.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\checkbox_off.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\checkbox_selected.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\close_text.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\close.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\completed.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\drop_down.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\edit_profile.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\edit.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\lap.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\logo_login.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\logo_settings.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ongoing_header.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ongoing.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\over_due.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\pending.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\present_off.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\present.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\prof.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\radio_off.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\radio_on.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\reportee.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\search.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\select.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\send.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\show_password.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\success.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\up_drop_down.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\prof.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\eye.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\absent_off.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\absent.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\add_user.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\arrow.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\back_arrow.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\checkbox_off.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\checkbox_selected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\close_text.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\close.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\completed.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\drop_down.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\edit_profile.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\edit.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\logo_login.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\logo_settings.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ongoing_header.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ongoing.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\over_due.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\pending.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\present_off.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\present.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\radio_off.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\radio_on.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\reportee.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\search.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\select.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\send.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\show_password.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\up_drop_down.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\eye.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\absent_off.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\absent.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\add_user.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\arrow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\back_arrow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\checkbox_off.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\checkbox_selected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\close_text.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\close.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\completed.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\drop_down.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\edit_profile.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\edit.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\logo_login.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\logo_settings.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ongoing_header.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ongoing.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\over_due.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\pending.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\present_off.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\present.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\prof.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\radio_off.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\radio_on.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\reportee.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\search.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\select.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\send.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\show_password.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\success.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\up_drop_down.png" />
+    <AndroidResource Include="Resources\color\segmented_control_text.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\checkbox.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\checkbox.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\checkbox.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\checkbox.png" />
+    <AndroidResource Include="Resources\drawable\default_image.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_image.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_image.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_image.png" />
+    <AndroidResource Include="Resources\drawable\filter1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\filter1.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\filter1.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\filter1.png" />
+    <AndroidResource Include="Resources\drawable\msgBg.png" />
+    <AndroidResource Include="Resources\drawable\myMsgBg.png" />
+    <AndroidResource Include="Resources\drawable\user_pic.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\user_pic.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\user_pic.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_pic.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\hdpi.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\xhdpi.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\xxhdpi.png" />
+    <AndroidResource Include="Resources\drawable\mdpi.png" />
+    <AndroidResource Include="Resources\layout\tabs.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\toolbar.axml" />
+    <AndroidResource Include="Resources\drawable\filter.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\filter.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\filter.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\filter.png" />
+    <AndroidResource Include="Resources\drawable\iTunesArtwork.png" />
+    <AndroidResource Include="Resources\drawable\SplashScreen.xml" />
+    <AndroidResource Include="Resources\drawable\icon98.png" />
+    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\notification_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\notification_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\notification_icon.png" />
+    <AndroidResource Include="Resources\layout\customNotification.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\Ipa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\Ipa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\Ipa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ipa\Ipa.csproj">
+      <Project>{b15c4adf-882c-4597-b065-633f6e948b4e}</Project>
+      <Name>Ipa</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\bubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\bubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\bubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\home_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\home_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\home_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\home_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\loginBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\loginBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\loginBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\loginBG.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

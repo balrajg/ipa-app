@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ParticipantCourseItemView"
+		Padding = "0">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="StatusImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="10" />
+				<Setter Property="WidthRequest" Value="11" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="Activity" TargetType="StackLayout">
+				<Setter Property="Padding" Value="10,10,0,5" />
+				<Setter Property="BackgroundColor" Value="#eae8e8" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="ActivityTime" TargetType="Label">
+				<Setter Property="FontSize" Value="11" />
+				<Setter Property="TextColor" Value="#555555" />
+				<Setter Property="Font" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+			<Style x:Key="TimeList" TargetType="StackLayout">
+				<Setter Property="Orientation" Value="Horizontal" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="70" BackgroundColor="#FFFFFF" Padding="10,5,10,5" Spacing="0">
+			<StackLayout Style="{StaticResource Activity}">
+				<Label x:Name="Name" TextColor="#000000" FontSize="13" Font="{x:Static local:Constants.FontStyle}" />
+				<StackLayout Style="{StaticResource TimeList}">
+					<Image x:Name="Source" Style="{StaticResource StatusImage}" />
+					<Label x:Name="Status" Style="{StaticResource ActivityTime}" />
+				</StackLayout>
+			</StackLayout>
+			
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

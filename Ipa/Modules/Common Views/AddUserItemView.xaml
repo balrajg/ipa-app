@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Controls="clr-namespace:Ipa.Behaviors;assembly=Ipa" xmlns:local="clr-namespace:Ipa;assembly=Ipa" x:Class="Ipa.AddUserItemView">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="CloseTextImg" TargetType="Image">
+				<Setter Property="HorizontalOptions" Value="End" />
+				<Setter Property="HeightRequest" Value="11" />
+				<Setter Property="WidthRequest" Value="11" />
+				<Setter Property="Aspect" Value="AspectFit" />
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="8">
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,10,0" Spacing="0">
+				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+					<local:MyEntry x:Name="NameEty" Placeholder="Name" Keyboard="Text" HeightRequest="40" HorizontalOptions="FillAndExpand" FontSize="14">
+						<local:MyEntry.Behaviors>
+							<Controls:MaxLimitBehavior />
+						</local:MyEntry.Behaviors>
+					</local:MyEntry>
+<!--					<Image  Source="close_text.png" Style="{StaticResource CloseTextImg}" IsVisible="{Binding CanShowClearButton}">
+					</Image>-->
+				</StackLayout>
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,10,0" Spacing="0">
+				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+					<local:MyEntry x:Name="EmpIdEty" Placeholder="EMP ID" Keyboard="Text" HeightRequest="40" HorizontalOptions="FillAndExpand" FontSize="14">
+						<local:MyEntry.Behaviors>
+							<Controls:MaxLimitBehavior />
+						</local:MyEntry.Behaviors>
+					</local:MyEntry>
+<!--					<Image Source="close_text.png" Style="{StaticResource CloseTextImg}" IsVisible="{Binding CanShowClearText}">
+						<Image.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding ClearIdTextCmd}" />
+						</Image.GestureRecognizers>
+					</Image>-->
+				</StackLayout>
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+			<StackLayout x:Name="RemoveBtn" HorizontalOptions="Fill" HeightRequest="30" Padding="10">
+				<Label Text="REMOVE" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="12" TextColor="#FC6262" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:Views="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ManagerCourseDetailActivityPage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BackArrowImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="9" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="ActivityName" TargetType="Label">
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="18" />
+				<Setter Property="TextColor" Value="#FFFFFF" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+			<Style x:Key="ActivityList" TargetType="Label">
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="TextColor" Value="#8A8A8A" />
+				<Setter Property="HeightRequest" Value="33" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+						<OnPlatform x:TypeArguments="x:Int32" Android="58" iOS="52" x:Key="HeaderRowHeight" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" BackgroundColor="#EEEEEE">
+
+
+    <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+      <StackLayout Orientation="Horizontal"  BackgroundColor="#ef0f0f" HorizontalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,10,5,10">
+          <StackLayout HorizontalOptions="Start" Orientation="Horizontal" HeightRequest="25" WidthRequest="70" BackgroundColor="#485faa">
+            <StackLayout HorizontalOptions="Start"  Padding="8,0,0,0" VerticalOptions ="Center">
+              <Image Source="back_arrow.png" Style="{StaticResource BackArrowImage}" />
+              <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding BackBtnCmd}" />
+              </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout HorizontalOptions="End" VerticalOptions ="Center" WidthRequest="50">
+              <Label Text="BACK" TextColor="#FFFFFF" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="14" />
+              <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding BackBtnCmd}" />
+              </StackLayout.GestureRecognizers>
+            </StackLayout>
+          </StackLayout>
+          <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="30,0,10,0">
+            <Label Text="{Binding ActivityName}" Style="{StaticResource ActivityName}" />
+          </StackLayout>
+        </StackLayout>
+
+      </StackLayout>
+    </StackLayout>
+    
+    
+    
+		<ScrollView Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+				<StackLayout x:Name="Completed" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="{Binding CanShowCompleted}">
+					<StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#485faa">
+						<Label Text="COMPLETED" Style="{StaticResource ActivityList}" TextColor="#FFFFFF" />
+					</StackLayout>
+					<ListView 
+						x:Name="CompletedList" 
+						ItemsSource="{Binding ReporteeCompleted}" 
+						SeparatorVisibility="None"
+						SelectedItem="{Binding SelectedReportee, Mode=TwoWay}"  
+                        RowHeight="{StaticResource HeaderRowHeight}"
+					    BackgroundColor="White"
+						HorizontalOptions="FillAndExpand" 
+						VerticalOptions="Fill">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<ViewCell.View>
+										<Views:ParticipantItemView ParticipantName="{Binding FullName}" ParticipantId="{Binding EmpId}" ParticipantSource="{Binding ProfileImage}" />
+									</ViewCell.View>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+				</StackLayout>
+				<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding CanShowPending}" Spacing="0">
+					<StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#485faa">
+						<Label Text="PENDING" Style="{StaticResource ActivityList}" TextColor="#FFFFFF" />
+					</StackLayout>
+					<ListView 
+					x:Name="PendingList" 
+					ItemsSource="{Binding ReporteePending}" 
+					SelectedItem="{Binding SelectedReportee, Mode=TwoWay}" 
+					SeparatorVisibility="None" 
+                    RowHeight="{StaticResource HeaderRowHeight}"
+					BackgroundColor="White"
+					HorizontalOptions="FillAndExpand" 
+					VerticalOptions="Fill">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<ViewCell.View>
+										<Views:ParticipantItemView ParticipantName="{Binding FullName}" ParticipantId="{Binding EmpId}" ParticipantSource="{Binding ProfileImage}" />
+									</ViewCell.View>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+				</StackLayout>
+				<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding CanShowOverdue}" Spacing="0">
+					<StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#485faa">
+						<Label Text="OVERDUE" Style="{StaticResource ActivityList}" TextColor="#FFFFFF" />
+					</StackLayout>
+					<ListView 
+					x:Name="OverdueList" 
+					ItemsSource="{Binding ReporteeOverDue}"
+					 SeparatorVisibility="None" 
+                     RowHeight="{StaticResource HeaderRowHeight}"
+					 BackgroundColor="White"
+					 SelectedItem="{Binding SelectedReportee, Mode=TwoWay}" 
+					 HorizontalOptions="FillAndExpand" 
+					 VerticalOptions="Fill">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<ViewCell.View>
+										<Views:ParticipantItemView ParticipantName="{Binding FullName}" ParticipantId="{Binding EmpId}" ParticipantSource="{Binding ProfileImage}" />
+									</ViewCell.View>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+					<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+					<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

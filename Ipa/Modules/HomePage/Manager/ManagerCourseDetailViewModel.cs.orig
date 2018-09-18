@@ -1,0 +1,338 @@
+﻿using System;
+
+using Xamarin.Forms;
+using System.Collections.Generic;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Plugin.Connectivity;
+using System.Diagnostics;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+
+namespace Mentor
+{
+	public class ManagerCourseDetailViewModel : ViewModelBase
+	{
+		ManagerCourseDetailPage _managerCourseDetailPage;
+		private CourseViewModel _SelectedCourse;
+
+		public ManagerCourseDetailViewModel (CourseViewModel selectedCourse,List<Reportee> reporteeList, List<ParticipantDetail> activityList)
+		{
+			this._SelectedCourse = selectedCourse;
+			FetchAttendanceReport (selectedCourse.CourseId);
+			GetReporteeViewModelList (reporteeList);
+			GetActivityViewModelList (activityList);
+//			GetAttendanceViewModelList (attendanceList,selectedCourse.CourseId,selectedCourse.StartDate,reporteeList);
+		}
+
+		private ObservableCollection<ReporteeViewModel> _ReporteeList;
+
+		public ObservableCollection<ReporteeViewModel> ReporteeList {
+			set { 
+				if (Set (() => ReporteeList, ref _ReporteeList, value)) {
+					RaisePropertyChanged (() => ReporteeList);
+				}
+			}
+			get { 
+				return _ReporteeList ?? (_ReporteeList = new ObservableCollection<ReporteeViewModel> ());
+			}
+		}
+
+		private ObservableCollection<ActivityCompletionViewModel> _ActivityCompletionList;
+
+		public ObservableCollection<ActivityCompletionViewModel> ActivityCompletionList {
+			set { 
+				if (Set (() => ActivityCompletionList, ref _ActivityCompletionList, value)) {
+					RaisePropertyChanged (() => ActivityCompletionList);
+				}
+			}
+			get { 
+				return _ActivityCompletionList ?? (_ActivityCompletionList = new ObservableCollection<ActivityCompletionViewModel> ());
+			}
+		}
+
+		private ObservableCollection<AttendanceListItemViewModel> _AttendanceList;
+
+		public ObservableCollection<AttendanceListItemViewModel> AttendanceList {
+			set { 
+				if (Set (() => AttendanceList, ref _AttendanceList, value)) {
+					RaisePropertyChanged (() => AttendanceList);
+				}
+			}
+			get { 
+				return _AttendanceList ?? (_AttendanceList = new ObservableCollection<AttendanceListItemViewModel> ());
+			}
+		}
+
+		private bool _IsBusy;
+
+		public bool IsBusy {
+			set { 
+				if (Set (() => IsBusy, ref _IsBusy, value)) {
+					_IsBusy = value;
+				}
+			}
+			get { 
+				return _IsBusy;
+			}
+		}
+
+		public string CourseFullName {
+			get { 
+				return _SelectedCourse.CourseFullName;
+			}
+		}
+
+		public string CourseID {
+			get {
+				return _SelectedCourse.CourseId;
+			}
+		}
+
+		public string CourseStatus {
+			get { 
+				return _SelectedCourse.CourseStatus;
+			}
+		}
+
+		public ImageSource CourseSource {
+			get { 
+				return _SelectedCourse.TimeImage;
+			}
+		}
+
+		public string TotalReportee {
+			get { 
+				if (_SelectedCourse.ParticipantCount != null)
+					return string.Format ("REPORTEES ({0})", _SelectedCourse.ReporteeCount);
+				else
+					return "--";
+			}
+		}
+
+		private bool _IsOverView;
+
+		public bool IsOverView {
+			set { 
+				if (Set (() => IsOverView, ref _IsOverView, value)) {
+					_IsOverView = value;
+				}
+			}
+			get { 
+				return _IsOverView;
+			}
+		}
+
+		private CourseViewModel _SelectedCourseDetail;
+
+		public CourseViewModel SelectedCourseDetail {
+
+			set { 
+				_SelectedCourseDetail = value;
+				RaisePropertyChanged (() => SelectedCourseDetail);
+				if (value != null)
+					OnCourseDetailSelected ();
+			}
+			get { 
+				return _SelectedCourseDetail;
+			}
+		}
+
+		private ActivityCompletionViewModel _SelectedActivity;
+
+		public ActivityCompletionViewModel SelectedActivity {
+
+			set { 
+				_SelectedActivity = value;
+				RaisePropertyChanged (() => SelectedActivity);
+				if (value != null)
+					OnActivitySelected ();
+			}
+			get { 
+				return _SelectedActivity;
+			}
+		}
+
+		private RelayCommand _BackBtnCmd;
+
+		public RelayCommand BackBtnCmd {
+			get { 
+				return _BackBtnCmd ?? (_BackBtnCmd = new RelayCommand (() => {
+					NavigationHandler.GlobalNavigator.Navigation.PopAsync ();
+				}));
+			}
+		}
+
+<<<<<<< HEAD
+		private AttendanceListItemViewModel _SelectedItem;
+
+		public AttendanceListItemViewModel SelectedItem {
+			set { 
+				_SelectedItem = value;
+				RaisePropertyChanged (() => SelectedItem);
+=======
+		private ObservableCollection<AttendanceListItemViewModel> _AttendanceList;
+		public ObservableCollection<AttendanceListItemViewModel> AttendanceListItems{
+			set{ 
+				if(Set(()=> AttendanceListItems, ref _AttendanceList, value)){
+					RaisePropertyChanged(()=> AttendanceListItems);
+				}
+			}
+			get{ 
+				return _AttendanceList ?? (_AttendanceList = new ObservableCollection<AttendanceListItemViewModel> ());
+			}
+		}
+
+		private AttendanceListItemViewModel _SelectedItem;
+		public AttendanceListItemViewModel SelectedItem{
+			set{ 
+				_SelectedItem = value;
+>>>>>>> 9f20232b0d57d09bd71ad2fe95aa382e8a10a3c4
+				if (value != null) {
+					OnAttendanceListItemSelected ();
+				}
+			}
+<<<<<<< HEAD
+			get {
+=======
+			get{
+>>>>>>> 9f20232b0d57d09bd71ad2fe95aa382e8a10a3c4
+				return _SelectedItem;
+			}
+		}
+
+<<<<<<< HEAD
+		public void OnAttendanceListItemSelected ()
+=======
+		public void OnAttendanceListItemSelected()
+>>>>>>> 9f20232b0d57d09bd71ad2fe95aa382e8a10a3c4
+		{
+			if (CrossConnectivity.Current.IsConnected) { 
+				IsBusy = true;
+				ReportHandler.GetReporteeList (App.UserName, SelectedItem.CourseId,
+					(responseReporteeList) => {
+						Debug.WriteLine ("Success" + responseReporteeList.Data);
+						ManagerAttendanceLookupPage _ManagerAttendanceLookupPage = new ManagerAttendanceLookupPage ();
+<<<<<<< HEAD
+						_ManagerAttendanceLookupPage.BindingContext = new ManagerAttendanceLookupViewModel (SelectedItem, responseReporteeList.Data.ReportList);
+						NavigationHandler.GlobalNavigator.Navigation.PushAsync (_ManagerAttendanceLookupPage);
+=======
+						_ManagerAttendanceLookupPage.BindingContext = new ManagerAttendanceLookupViewModel(SelectedItem,responseReporteeList.Data.ReportList);
+						NavigationHandler.GlobalNavigator.Navigation.PushAsync (_ManagerAttendanceLookupPage);
+						SelectedItem = null;
+>>>>>>> 9f20232b0d57d09bd71ad2fe95aa382e8a10a3c4
+						IsBusy = false;
+					},
+					(errorResponseReporteeList) => {
+						Debug.WriteLine ("Error:: /nCode: " + errorResponseReporteeList.ResponseCode + "/nMessage: " + errorResponseReporteeList.Status);
+<<<<<<< HEAD
+=======
+						SelectedItem = null;
+>>>>>>> 9f20232b0d57d09bd71ad2fe95aa382e8a10a3c4
+						IsBusy = false;
+					});
+			}
+		}
+
+<<<<<<< HEAD
+		private async void GetAttendanceViewModelList(List<AttendanceDetail> attendanceList,string courseID,string startDate,List<Reportee> participantList){
+
+			ObservableCollection<AttendanceListItemViewModel> attendanceListItem = new ObservableCollection<AttendanceListItemViewModel> ();
+			foreach (var attendance in attendanceList) {
+				AttendanceListItemViewModel attendanceViewModel = new AttendanceListItemViewModel (attendance);
+				attendanceViewModel.CourseId = courseID;
+				attendanceViewModel.ParticipantList = participantList;
+				attendanceViewModel.StartDate = startDate;
+				attendanceListItem.Add (attendanceViewModel);
+			}
+			AttendanceList = attendanceListItem;
+		}
+
+		private async void OnCourseDetailSelected ()
+=======
+		private async void GetAttendanceViewModelList(List<AttendanceDetail> attendanceList,string courseId){
+
+			ObservableCollection<AttendanceListItemViewModel> attendanceListItem= new ObservableCollection<AttendanceListItemViewModel> ();
+			foreach (var attendance in attendanceList) {
+				AttendanceListItemViewModel attendanceViewModel = new AttendanceListItemViewModel (attendance);
+				attendanceViewModel.CourseId = courseId;
+				attendanceListItem.Add (attendanceViewModel);
+			}
+			AttendanceListItems = attendanceListItem;
+		}
+
+		private async Task FetchAttendanceReport (string courseId){
+			if (CrossConnectivity.Current.IsConnected) {
+				IsBusy = true;
+				await AttendanceHandler.GetAttendance (courseId,
+					(response) => {
+						this.GetAttendanceViewModelList (response.AttendanceData.AttendanceList, courseId);
+						IsBusy = false;
+					},
+					(errorRespnose) => {
+						//Error callback
+						//Debug.WriteLine ("Error:: /nCode: " + errorRespnose.ResponseCode + "/nMessage: " + errorRespnose.Status);
+						NavigationHandler.GlobalNavigator.DisplayAlert (Constants.APP_NAME, Constants.UnSuccess, Constants.OK_TEXT);
+						IsBusy = false;
+					});
+			} else {
+				NavigationHandler.GlobalNavigator.DisplayAlert (Constants.APP_NAME, Constants.NETWORK_ERROR, Constants.OK_TEXT);
+			}
+		}
+
+		private async void OnCourseDetailSelected()
+>>>>>>> 9f20232b0d57d09bd71ad2fe95aa382e8a10a3c4
+		{
+			if (IsOverView) {
+				_managerCourseDetailPage.ShowOverView ();
+			} else {
+				_managerCourseDetailPage.ShowAttendance ();
+			}
+		}
+
+		private async void OnActivitySelected ()
+		{
+			if (CrossConnectivity.Current.IsConnected) { 
+				IsBusy = true;
+				await ReportHandler.GetReporteeList (App.UserName, SelectedActivity.CourseId,
+					(responseReporteeList) => {
+						Debug.WriteLine ("Success" + responseReporteeList.Data);
+						ManagerCourseDetailActivityPage _ManagerCourseDetailActivityPage = new ManagerCourseDetailActivityPage ();
+						_ManagerCourseDetailActivityPage.BindingContext = new ManagerCourseDetailActivityViewModel (SelectedActivity, responseReporteeList.Data.ReportList);
+						NavigationHandler.GlobalNavigator.Navigation.PushAsync (_ManagerCourseDetailActivityPage);
+						IsBusy = false;
+					},
+					(errorResponseReporteeList) => {
+						Debug.WriteLine ("Error:: /nCode: " + errorResponseReporteeList.ResponseCode + "/nMessage: " + errorResponseReporteeList.Status);
+						IsBusy = false;
+					});
+			}
+		}
+
+		private void GetReporteeViewModelList (List<Reportee> reporteeList)
+		{
+
+			ObservableCollection<ReporteeViewModel> reporteeListItem = new ObservableCollection<ReporteeViewModel> ();
+			foreach (var reportee in reporteeList) {
+				ReporteeViewModel reporteeViewModel = new ReporteeViewModel (reportee);
+				reporteeListItem.Add (reporteeViewModel);
+			}
+			ReporteeList = reporteeListItem;
+		}
+
+		private void GetActivityViewModelList (List<ParticipantDetail> activityList)
+		{
+
+			ObservableCollection<ActivityCompletionViewModel> activityListItem = new ObservableCollection<ActivityCompletionViewModel> ();
+			foreach (var activity in activityList) {
+				ActivityCompletionViewModel activityViewModel = new ActivityCompletionViewModel (activity);
+				activityViewModel.CourseId = CourseID;
+				activityViewModel.CourseName = CourseFullName;
+				activityListItem.Add (activityViewModel);
+			}
+			ActivityCompletionList = activityListItem;
+		}
+	}
+}
+
+

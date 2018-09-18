@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Ipa;assembly=Ipa" xmlns:Controls="clr-namespace:Ipa.Behaviors;assembly=Ipa" x:Class="Ipa.FilterReporteePage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="CloseImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="16">
+				</Setter>
+				<Setter Property="WidthRequest" Value="15">
+				</Setter>
+				<Setter Property="Aspect" Value="AspectFit">
+				</Setter>
+				<Setter Property="HorizontalOptions" Value="Start">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="Center">
+				</Setter>
+			</Style>
+			<Style x:Key="SearchImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="13">
+				</Setter>
+				<Setter Property="WidthRequest" Value="13">
+				</Setter>
+				<Setter Property="Aspect" Value="AspectFit">
+				</Setter>
+				<Setter Property="HorizontalOptions" Value="Start">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="Center">
+				</Setter>
+			</Style>
+			<Style x:Key="SearchList" TargetType="StackLayout">
+				<Setter Property="Orientation" Value="Horizontal">
+				</Setter>
+				<Setter Property="Padding" Value="10,0,10,0">
+				</Setter>
+				<Setter Property="Spacing" Value="5">
+				</Setter>
+				<Setter Property="BackgroundColor" Value="#FFFFFF">
+				</Setter>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand">
+				</Setter>
+				<Setter Property="HeightRequest" Value="40">
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout Spacing="0" BackgroundColor="#FFFFFF" HorizontalOptions="FillAndExpand">
+				<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+					<StackLayout Orientation="Horizontal" BackgroundColor="#485faa" HorizontalOptions="FillAndExpand">
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+							<StackLayout HorizontalOptions="Start" HeightRequest="25" WidthRequest="20" Padding="15,15,0,0">
+								<Image Source="close.png" Style="{StaticResource CloseImage}" />
+								<StackLayout.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding CloseCmd}" />
+								</StackLayout.GestureRecognizers>
+							</StackLayout>
+							<StackLayout HorizontalOptions="FillAndExpand" Padding="0,13,5,5">
+								<Label Text="Filter Reportees" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="18" TextColor="#FFFFFF" VerticalTextAlignment="Center" />
+							</StackLayout>
+						</StackLayout>
+						<StackLayout HorizontalOptions="End" Padding="10,15,10,10" HeightRequest="25" WidthRequest="40">
+							<Label Text="DONE" TextColor="#FFFFFF" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="11" VerticalTextAlignment="Center" />
+							<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding DoneCmd}" />
+							</StackLayout.GestureRecognizers>
+						</StackLayout>
+					</StackLayout>
+				</StackLayout>
+				<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+					<StackLayout Spacing="0" HorizontalOptions="FillAndExpand" BackgroundColor="#EEEEEE">
+						<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="44" Spacing="0">
+							<StackLayout Style="{StaticResource SearchList}">
+								<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+									<StackLayout.Padding>
+										  <OnPlatform x:TypeArguments="Thickness" Android="10,0,0,0" iOS="10,0,0,0">
+                                    </OnPlatform>
+									</StackLayout.Padding>
+									<Image Source="search.png" Style="{StaticResource SearchImage}" />
+									<StackLayout>
+										<StackLayout.Padding>
+											<OnPlatform x:TypeArguments="Thickness" Android="0,3,0,0" iOS="0,12,0,0">
+										    </OnPlatform>
+										</StackLayout.Padding>
+										<local:MyEntry Placeholder="Search" Text="{Binding SearchText}" Keyboard="Text" VerticalOptions="Fill" FontSize="13" HorizontalOptions="FillAndExpand">
+											<local:MyEntry.Behaviors>
+												<Controls:MaxLimitBehavior />
+											</local:MyEntry.Behaviors>
+										</local:MyEntry>
+									</StackLayout>
+								</StackLayout>
+							</StackLayout>
+						</StackLayout>
+						<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="20" HeightRequest="44" Padding="10,5,10,5">
+							<local:CheckBoxView HeightRequest="20" WidthRequest="20" IsChecked="{Binding IsSelectAll}" CheckedImage="select.png" UncheckedImage="checkbox_off.png" />
+							<Label Text="Select All" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#2D2D2D" FontSize="12" VerticalTextAlignment="Center" />
+						</StackLayout>
+						<ListView x:Name="ParticipantList" ItemsSource="{Binding FilterReporteeList}" SeparatorVisibility="None" RowHeight="51" BackgroundColor="White" SelectedItem="{Binding SelectedReportee}" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<ViewCell>
+										<ViewCell.View>
+											<local:ParticipantFilterListItemView ParticipantName="{Binding FullName}" IsPresent="{Binding IsSelected}" PofileImage="{Binding ProfileImage}" />
+										</ViewCell.View>
+									</ViewCell>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+					</StackLayout>
+				</ScrollView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="Ipa.CheckBoxView">
+	<ContentView.Content>
+	<StackLayout 
+	Orientation ="Horizontal"
+	Padding ="0,0,0,0"
+	Spacing = "10" >
+
+		<Image
+		x:Name = "CheckImage"
+		VerticalOptions= "Center"
+		HorizontalOptions="Start" ></Image>
+
+		<Label 
+		x:Name = "CheckboxLabel"
+		VerticalOptions = "Center"
+		XAlign ="Start"
+		HorizontalOptions = "StartAndExpand"></Label>
+
+		<StackLayout.GestureRecognizers>
+			<TapGestureRecognizer Tapped="OnCheckboxTapped" NumberOfTapsRequired="1"/>
+		</StackLayout.GestureRecognizers>
+
+	</StackLayout>
+	</ContentView.Content>
+</ContentView>

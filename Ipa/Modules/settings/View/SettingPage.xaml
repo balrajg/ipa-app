@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+x:Class="Ipa.SettingPage" x:Name="Setting" Title=""  >
+	<ContentPage.Icon>
+		<OnPlatform x:TypeArguments="FileImageSource"  Android="settings.png" iOS="settings.png">
+    
+		</OnPlatform>
+	</ContentPage.Icon>
+	<ContentPage.Padding>
+	<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="10"></Setter>
+				<Setter Property="BackgroundColor" Value="#FFFFFF"></Setter>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+			</Style>
+			<Style x:Key="Setting" TargetType="Label">
+				<Setter Property="FontSize" Value="13"></Setter>
+				<Setter Property="TextColor" Value="#FFFFFF"></Setter>
+				<Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+				<Setter Property="Font" Value="{x:Static local:Constants.FontStyle}"></Setter>
+				<Setter Property="HeightRequest" Value="50" />
+			</Style>
+			<Style x:Key="SettingList" TargetType="StackLayout">
+				<Setter Property="BackgroundColor" Value="#485faa"></Setter>
+				<Setter Property="Padding" Value="10,0,0,0"></Setter>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+			</Style>
+				<Style x:Key="BackArrowImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="16" />
+				<Setter Property="WidthRequest" Value="9" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="DownArrow" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15"></Setter>
+				<Setter Property="WidthRequest" Value="9"></Setter>
+				<Setter Property="Aspect" Value="AspectFit"></Setter>
+				<Setter Property="HorizontalOptions" Value="Start"></Setter>
+				<Setter Property="VerticalOptions" Value="Center"></Setter>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<StackLayout Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+		<StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#CCCCCC">
+			<RelativeLayout HeightRequest="180" x:Name="Relative" >
+				
+				<BoxView BackgroundColor="Black" Opacity="0.2" 
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=180}" 
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,ElementName=Relative,Property=Width}"></BoxView>
+				<controls:CircleImage x:Name="ProfileImage" Source="{Binding ProfileImage}" HorizontalOptions="FillAndExpand" Aspect="AspectFit" BackgroundColor="Transparent" 
+				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5,Constant=-40}" 
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Y,Constant=20}" 
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=80}" 
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=80}" />
+				<StackLayout
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=20}" 
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=25}" 
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,ElementName=Relative,Property=Width}" >
+				<Label Text="{Binding FristName}" x:Name="Name" LineBreakMode="TailTruncation" TextColor="#FFFFFF" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+				</StackLayout>
+				<StackLayout Padding="10,10,10,10" Orientation="Horizontal" Spacing="0" 
+				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5,Constant=-50}" 
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=40}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=40}"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=110}">
+				<Label Text="EDIT PROFILE" TextColor="#FFFFFF"  HorizontalOptions="CenterAndExpand" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="11" />
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding EditProfileCmd}" />
+					</StackLayout.GestureRecognizers>
+				<Image Source="arrow.png" Style="{StaticResource BackArrowImage}" />
+				</StackLayout>
+			</RelativeLayout>
+		</StackLayout>
+		<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#EEEEEE">
+			
+				<StackLayout  HorizontalOptions="FillAndExpand"  BackgroundColor="#FFFFFF" Padding="10,20,10,20">
+					<StackLayout Style="{StaticResource SettingList}">
+						<Label Text="Change Password" Style="{StaticResource Setting}">
+						</Label>
+						
+						<StackLayout.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding ChangePasswordCmd}" />
+						</StackLayout.GestureRecognizers>
+					</StackLayout>
+          <BoxView Style="{StaticResource BoxViewStyle}" />
+					<StackLayout Style="{StaticResource SettingList}">
+						<Label Text="About Us" Style="{StaticResource Setting}" />
+					
+						<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding AboutUsCmd}" />
+					</StackLayout.GestureRecognizers>
+					</StackLayout>
+          <BoxView Style="{StaticResource BoxViewStyle}" />
+					<StackLayout Style="{StaticResource SettingList}">
+						<Label Text="Terms &amp; Conditions" Style="{StaticResource Setting}" />
+						
+						<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding TermsConditionCmd}" />
+					</StackLayout.GestureRecognizers>
+					</StackLayout>
+          <BoxView Style="{StaticResource BoxViewStyle}" />
+					<StackLayout Style="{StaticResource SettingList}">
+						<Label Text="How this App Works?" Style="{StaticResource Setting}" />
+						<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding HowAppWorkCmd}" />
+					</StackLayout.GestureRecognizers>
+					</StackLayout>
+				</StackLayout>
+				<StackLayout Spacing="0" Orientation="Horizontal" HorizontalOptions="Center">
+					<StackLayout  Padding="0,10,15,10" VerticalOptions="Center">
+						<Image Source="logo_settings.png" HeightRequest="35"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Aspect="AspectFit" />
+					</StackLayout>
+					<StackLayout  VerticalOptions="Center">
+						<Label Text="{Binding AppVersion}" TextColor="#828282" Font="{x:Static local:Constants.FontStyle}" FontSize="13" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+					</StackLayout>
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
+</ContentPage>

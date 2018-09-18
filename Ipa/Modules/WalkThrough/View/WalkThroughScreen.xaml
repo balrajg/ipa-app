@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:view="clr-namespace:Ipa;assembly=Ipa"
+xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+x:Class="Ipa.WalkThroughScreen" 
+BackgroundColor="White">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<RelativeLayout x:Name="Relative" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+		<!--<view:GalleryCarouselView x:Name="WalkThroughViewer" BackgroundColor="Lime"
+		RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}" 
+		RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}" 
+		RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" 
+		RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+			
+		</view:GalleryCarouselView>-->
+		<cv:CarouselView x:Name="WalkThroughViewer" ItemsSource="{Binding WalkThroughs}" Item="{Binding SelectedItem}"
+		RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}" 
+		RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}" 
+		RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" 
+		RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+			<cv:CarouselView.ItemTemplate>
+      			<DataTemplate>		
+					<view:WalkthroughView></view:WalkthroughView>
+				</DataTemplate>
+			</cv:CarouselView.ItemTemplate>
+		</cv:CarouselView>
+		<StackLayout
+		RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}" 
+		RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-180}" 
+		RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant, Constant=40}" 
+		RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+			<view:PagerIndicatorDots HorizontalOptions="Center" BackgroundColor="White" VerticalOptions="FillAndExpand"  x:Name="DotIndicator">
+<!--			 ItemsSource="{Binding WalkThroughs}" SelectedItem="{Binding SelectedItem}"-->
+			</view:PagerIndicatorDots>
+		</StackLayout>
+
+		<Label x:Name="Button" Text="GET STARTED" TextColor="#F4821E" VerticalTextAlignment="Center" HorizontalTextAlignment="End"
+		RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant =-25}" 
+		RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-80}" 
+		RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant, Constant=40}" 
+		RelativeLayout.WidthConstraint="{ConstraintExpression  Type=RelativeToParent,ElementName=Relative,Property=Width}">
+		<Label.GestureRecognizers>
+			<TapGestureRecognizer Command="{Binding StartedCmd}" />
+		</Label.GestureRecognizers>
+		</Label>
+	</RelativeLayout>
+</ContentPage>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ClientReportItemListView">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="FeedBackName" TargetType="Label">
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="TextColor" Value="#757575" />
+				<Setter Property="HeightRequest" Value="30" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+				<Setter Property="VerticalOptions" Value="FillAndExpand"/>
+			</Style>
+			<Style x:Key="FeedBackPercent" TargetType="Label">
+				<Setter Property="FontSize" Value="13" />
+				<Setter Property="TextColor" Value="#2D2D2D" />
+				<Setter Property="HeightRequest" Value="30" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+				<Setter Property="VerticalTextAlignment" Value="Center"/>
+				<Setter Property="VerticalOptions" Value="FillAndExpand"/>
+			</Style>
+			<Style x:Key="FeedBackList" TargetType="StackLayout">
+				<Setter Property="Padding" Value="10,10,10,10" />
+				<Setter Property="BackgroundColor" Value="#FFFFFF" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="HeightRequest" Value="60" />
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#BDBCBC" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="AttendanceImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="18" />
+				<Setter Property="WidthRequest" Value="13" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="LapImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="FillAndExpand"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentView.Content>
+	<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="100" Spacing="0" BackgroundColor="#EEEEEE">
+		<StackLayout Padding="10,0,0,10" HorizontalOptions="FillAndExpand" HeightRequest="40" Spacing="0" BackgroundColor="#485faa">
+			<Label x:Name="Coursename" FontFamily="{x:Static local:Constants.FontStyle}" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HeightRequest="44" TextColor="#FFFFFF" FontSize="12" />
+		</StackLayout>
+		<StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" HorizontalOptions="FillAndExpand" HeightRequest="58" Spacing="0" Padding="10,0,10,0">
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+				<Image Source="attandance.png"  Style="{StaticResource AttendanceImage}"/>
+				<Label Text="Attendance" TextColor="#2D2D2D" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="13" />
+			</StackLayout>
+			<Label x:Name="Attendancepercent" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#2D2D2D" VerticalTextAlignment="Center" FontSize="13" />
+		</StackLayout>
+		<StackLayout Padding="0,0,0,0" Spacing="0">
+			<BoxView Style="{StaticResource BoxViewStyle}" />
+		</StackLayout>
+		<Grid RowSpacing="2" ColumnSpacing="2" BackgroundColor="#EEEEEE">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<StackLayout Grid.Row="0" Grid.Column="0" Style="{StaticResource FeedBackList}">
+				<Label x:Name="Prescore" Style="{StaticResource FeedBackPercent}" IsVisible="false"/>
+				<Image Source="lap.png" x:Name="PreImg" Style="{StaticResource LapImage}" IsVisible="false"/>
+				<Label Text="Pre Test" Style="{StaticResource FeedBackName}" />
+			</StackLayout>
+			<StackLayout Grid.Row="0" Grid.Column="1" Style="{StaticResource FeedBackList}">
+				<Label x:Name="Postscore" Style="{StaticResource FeedBackPercent}" IsVisible="false"/>
+				<Image Source="lap.png" x:Name="PostImg" Style="{StaticResource LapImage}" IsVisible="false"/>
+				<Label Text="Post Test" Style="{StaticResource FeedBackName}" />
+			</StackLayout>
+			<StackLayout Grid.Row="1" Grid.Column="0" Style="{StaticResource FeedBackList}">
+				<Label x:Name="Learnerscore" Style="{StaticResource FeedBackPercent}" IsVisible="false"/>
+				<Image Source="lap.png" x:Name="LearnerImg" Style="{StaticResource LapImage}" IsVisible="false"/>
+				<Label Text="learner FeedBack" Style="{StaticResource FeedBackName}" />
+			</StackLayout>
+			<StackLayout Grid.Row="1" Grid.Column="1" Style="{StaticResource FeedBackList}">
+				<Label x:Name="Lapscore" Style="{StaticResource FeedBackPercent}" IsVisible="false"/>
+				<Image Source="lap.png" x:Name="LapImg" Style="{StaticResource LapImage}" IsVisible="false"/>
+				<Label Text="LAP" Style="{StaticResource FeedBackName}"/>
+			</StackLayout>
+		</Grid>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

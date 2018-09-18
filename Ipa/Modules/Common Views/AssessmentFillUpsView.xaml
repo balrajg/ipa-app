@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:View="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:Controls="clr-namespace:Ipa.Behaviors;assembly=Ipa" 
+x:Class="Ipa.AssessmentFillUpsView">
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" VerticalOptions="FillAndExpand" BackgroundColor="#FFFFFF">
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,10,10,65">
+				<Label x:Name="Questions" FontFamily="{x:Static View:Constants.FontStyle}" HorizontalOptions="FillAndExpand" FontSize="14" TextColor="#2D2D2D" />
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,10,10,10" Spacing="0" BackgroundColor="White">
+				<RelativeLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+					<View:RoundedBoxView x:Name="RoundedBoxView" CornerRadius="5" BackgroundColor="White" Opacity="100" BorderSize="2" BorderColor="Black" 
+					RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=X,Constant=0}" 
+					RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=X,Constant=15}" 
+					RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=150}" 
+					RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,ElementName=StackLayout,Property=Width}" />
+					<StackLayout x:Name="StackLayout" Orientation="Horizontal" Padding="10,10,10,10" 
+					RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=X,Constant=0}" 
+					RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Y,Constant=15}" 
+					RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant, Constant=150}" 
+					RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Constant=-30}">
+						<Editor x:Name="AnswerBox" WidthRequest="250" Keyboard="Text" FontSize="14" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+							<Editor.Behaviors>
+								<Controls:MaxLengthEditorBehaviour />
+							</Editor.Behaviors>
+						</Editor>
+					</StackLayout>
+				</RelativeLayout>
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

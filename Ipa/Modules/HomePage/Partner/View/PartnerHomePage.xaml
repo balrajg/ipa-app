@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+             xmlns:Views="clr-namespace:Ipa;assembly=Ipa" xmlns:Controls="clr-namespace:Ipa.Behaviors;assembly=Ipa" 
+             x:Class="Ipa.PartnerHomePage" 
+             Title="">
+	<ContentPage.Icon>
+		<OnPlatform x:TypeArguments="FileImageSource" iOS="home.png" Android="home_icon.png">
+		</OnPlatform>
+	</ContentPage.Icon>
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="FilterImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="20">
+				</Setter>
+				<Setter Property="WidthRequest" Value="20">
+				</Setter>
+				<Setter Property="Aspect" Value="AspectFit">
+				</Setter>
+				<Setter Property="HorizontalOptions" Value="End">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="Center">
+				</Setter>
+			</Style>
+			<Style x:Key="SearchImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="13">
+				</Setter>
+				<Setter Property="WidthRequest" Value="13">
+				</Setter>
+				<Setter Property="Aspect" Value="AspectFit">
+				</Setter>
+				<Setter Property="HorizontalOptions" Value="Start">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="Center">
+				</Setter>
+			</Style>
+			<Style x:Key="SearchText" TargetType="Label">
+				<Setter Property="FontSize" Value="12">
+				</Setter>
+				<Setter Property="TextColor" Value="#B8B8B8">
+				</Setter>
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}">
+				</Setter>
+				<Setter Property="VerticalTextAlignment" Value="Center">
+				</Setter>
+				<Setter Property="HorizontalTextAlignment" Value="Start">
+				</Setter>
+			</Style>
+			<Style x:Key="SearchList" TargetType="StackLayout">
+				<Setter Property="Orientation" Value="Horizontal">
+				</Setter>
+				<Setter Property="BackgroundColor" Value="#FFFFFF">
+				</Setter>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand">
+				</Setter>
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#D6D6D6" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="Activity" TargetType="StackLayout">
+				<Setter Property="Padding" Value="10,10,0,0">
+				</Setter>
+				<Setter Property="BackgroundColor" Value="#FFFFFF">
+				</Setter>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand">
+				</Setter>
+			</Style>
+						<OnPlatform x:TypeArguments="x:Double" Android="134" iOS="132" x:Key="ClassHeight" />
+
+			<OnPlatform x:TypeArguments="x:Int32" Android="60" iOS="60" x:Key="ActivityRowHeight" />
+			<OnPlatform x:TypeArguments="x:Double" Android="60" iOS="60" x:Key="Height" />
+			<OnPlatform x:TypeArguments="x:Int32" Android="67" iOS="66" x:Key="HeaderRowHeight" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout Spacing="0" HorizontalOptions="FillAndExpand" BackgroundColor="#EEEEEE">
+				<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="44" Spacing="0">
+					<StackLayout Style="{StaticResource SearchList}">
+						<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+							<StackLayout.Padding>
+								<OnPlatform x:TypeArguments="Thickness"  Android="15,0,0,0" iOS="10,0,0,0">
+								</OnPlatform>
+							</StackLayout.Padding>
+							<Image Source="search.png" Style="{StaticResource SearchImage}" />
+							<StackLayout>
+								<StackLayout.Padding>
+									<OnPlatform x:TypeArguments="Thickness"   Android="10,7,0,0" iOS="0,16,0,0">
+									</OnPlatform>
+								</StackLayout.Padding>
+								<local:MyEntry Placeholder="Search" Text="{Binding SearchText}" Keyboard="Text" VerticalOptions="Fill" FontSize="13" HorizontalOptions="FillAndExpand">
+									<local:MyEntry.Behaviors>
+										<Controls:MaxLimitBehavior />
+									</local:MyEntry.Behaviors>
+								</local:MyEntry>
+							</StackLayout>
+						</StackLayout>
+						<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Padding="0,10,0,5">
+							<BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="#485faa" HorizontalOptions="End" />
+						</StackLayout>
+						<StackLayout HorizontalOptions="End" Padding="0,15,10,10" HeightRequest="25" WidthRequest="25">
+							<Image Source="filter.png" Style="{StaticResource FilterImage}" />
+							<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding FilterCmd}" />
+							</StackLayout.GestureRecognizers>
+						</StackLayout>
+					</StackLayout>
+				</StackLayout>
+				<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+					<StackLayout Spacing="0" VerticalOptions="FillAndExpand">
+						<StackLayout Spacing="0" IsVisible="{Binding CanShowTodayCourseList}">
+							<StackLayout Padding="10,0,0,0" HeightRequest="42">
+								<Label Text="TODAY" TextColor="#8A8A8A" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="12" />
+							</StackLayout>
+							<ListView 
+							x:Name="CourseList" 
+							ItemsSource="{Binding TodayCourseList}" 
+							SelectedItem="{Binding SelectedCourse, Mode=TwoWay}" 
+							SeparatorVisibility="None" 
+							RowHeight="67" 
+							BackgroundColor="White" 
+							HorizontalOptions="FillAndExpand" 
+							VerticalOptions="Fill">
+								<ListView.ItemTemplate>
+									<DataTemplate>
+										<ViewCell>
+											<ViewCell.View>
+												<Views:ClientCourseItemView CourseFullName="{Binding CourseFullName}" TimeSource="{Binding TimeStatus}" TimeDescription="{Binding Status}" ParticipantStatus="{Binding TotalParticipant}" />
+											</ViewCell.View>
+										</ViewCell>
+									</DataTemplate>
+								</ListView.ItemTemplate>
+							</ListView>
+						</StackLayout>
+                        <StackLayout Spacing="0" IsVisible="{Binding CanShowActivityList}">
+                            <StackLayout Padding="10,0,0,10">
+                                <Label Text="UPCOMING ACTIVITIE(S)" Font="{x:Static local:Constants.FontStyle}" HeightRequest="42" VerticalTextAlignment="End" TextColor="#8A8A8A" FontSize="12" />
+                            </StackLayout>
+                            <ListView x:Name="ActivityList" ItemsSource="{Binding ActivityList}" SelectedItem="{Binding SelectedActivity, Mode=TwoWay}" SeparatorVisibility="None" BackgroundColor="White" HorizontalOptions="FillAndExpand" RowHeight="{StaticResource ActivityRowHeight}" VerticalOptions="Fill">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <ViewCell.View>
+                                                <StackLayout Style="{StaticResource Activity}" HeightRequest="{StaticResource Height}">
+                                                    <Label Text="{Binding CourseAttendanceName}" HeightRequest="60" VerticalTextAlignment="Center" TextColor="#2D2D2D" FontSize="13" />
+                                                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0">
+                                                        <BoxView Style="{StaticResource BoxViewStyle}" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </ViewCell.View>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <StackLayout Spacing="0" IsVisible="{Binding CanShowMyClassList}">
+							<StackLayout Padding="10,0,0,10" HeightRequest="42">
+								<Label Text="MY CLASSES" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="End" TextColor="#8A8A8A" FontSize="12" />
+							</StackLayout>
+							<ListView 
+							x:Name="MyClassList" 
+							ItemsSource="{Binding CourseList}" 
+							SeparatorVisibility="None" 
+							SelectedItem="{Binding SelectedCourse,Mode=TwoWay}" 
+							RowHeight="67" 
+							BackgroundColor="White" 
+							HorizontalOptions="FillAndExpand" 
+							VerticalOptions="Fill">
+								<ListView.ItemTemplate>
+									<DataTemplate>
+										<ViewCell>
+											<ViewCell.View>
+												<Views:ClientCourseItemView CourseFullName="{Binding CourseFullName}" TimeSource="{Binding TimeStatus}" TimeDescription="{Binding Status}" ParticipantStatus="{Binding TotalParticipant}" />
+											</ViewCell.View>
+										</ViewCell>
+									</DataTemplate>
+								</ListView.ItemTemplate>
+							</ListView>
+						</StackLayout>
+						
+					</StackLayout>
+				</ScrollView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

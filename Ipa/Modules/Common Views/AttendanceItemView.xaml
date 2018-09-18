@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa"
+x:Class="Ipa.AttendanceItemView">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="AbsentImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="PresentImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="55" BackgroundColor="#FFFFFF">
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,10,10,0" BackgroundColor="#FFFFFF" >
+				<StackLayout HorizontalOptions="FillAndExpand">
+					<Label x:Name="Day" TextColor="#2D2D2D" VerticalTextAlignment="Center" Font="{x:Static local:Constants.FontStyle}"  FontSize="16" />
+					<Label x:Name="Date" TextColor="#2D2D2D" VerticalTextAlignment="Center" Font="{x:Static local:Constants.FontStyle}"  FontSize="14" />
+				</StackLayout>
+				<StackLayout Orientation="Horizontal" IsVisible="{Binding CanShowPresent}" HorizontalOptions="FillAndExpand">
+					<Image Source="present.png"  Style="{StaticResource PresentImage}" />
+					<Label x:Name="Present" TextColor="#777777" VerticalTextAlignment="Center" Font="{x:Static local:Constants.FontStyle}"  FontSize="13" />
+				</StackLayout>
+				<StackLayout Orientation="Horizontal" IsVisible="{Binding CanShowAbsent}" HorizontalOptions="FillAndExpand">
+					<Image Source="absent.png" Style="{StaticResource AbsentImage}" />
+					<Label x:Name="Absent"  TextColor="#777777" VerticalTextAlignment="Center" Font="{x:Static local:Constants.FontStyle}"  FontSize="13" />
+				</StackLayout>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0">
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

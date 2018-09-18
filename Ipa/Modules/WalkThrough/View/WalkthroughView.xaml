@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="Ipa.WalkthroughView">
+	<ContentView.Content>
+		<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+			<StackLayout Spacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand">
+				<StackLayout Padding="80,80,80,80">
+					<Image x:Name="SampleImage" Source="{Binding Source}" HeightRequest="40" WidthRequest="150" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+				</StackLayout>
+				<StackLayout Padding="40,10,40,0">
+					<Label x:Name="Header" Text="{Binding Heading}" TextColor="#F4821E" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="21" />
+					<Label x:Name="Description" Text="{Binding Description}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#595959" FontSize="16" />
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</ContentView.Content>
+</ContentView>

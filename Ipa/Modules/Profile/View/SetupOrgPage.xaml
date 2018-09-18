@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:Views="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.SetupOrgPage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BackArrowImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="9" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+	<StackLayout Spacing="0" BackgroundColor="#FFFFFF" VerticalOptions="FillAndExpand">
+
+    <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+      <StackLayout Orientation="Horizontal"  BackgroundColor="#ef0f0f" HorizontalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,10,5,10">
+          <StackLayout HorizontalOptions="Start" Orientation="Horizontal" HeightRequest="25" WidthRequest="70" BackgroundColor="#485faa">
+            <StackLayout HorizontalOptions="Start"  Padding="8,0,0,0" VerticalOptions ="Center">
+              <Image Source="back_arrow.png" Style="{StaticResource BackArrowImage}" />
+              <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding BackBtnCmd}" />
+              </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout HorizontalOptions="End" VerticalOptions ="Center" WidthRequest="50">
+              <Label Text="BACK" TextColor="#FFFFFF" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="14" />
+              <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding BackBtnCmd}" />
+              </StackLayout.GestureRecognizers>
+            </StackLayout>
+          </StackLayout>
+          <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="30,0,10,0">
+            <Label Text="Organisation Info" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" VerticalTextAlignment="Center" FontSize="18" />
+          </StackLayout>
+        </StackLayout>
+        <StackLayout HorizontalOptions="End" Padding="10,15,10,10" HeightRequest="25" WidthRequest="35">
+          <Label Text="NEXT" TextColor="#FFFFFF" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="13" />
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding NextCmd}" />
+          </StackLayout.GestureRecognizers>
+        </StackLayout>
+      </StackLayout>
+    </StackLayout>
+    
+		<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<Views:OrgItemListView />
+		</ScrollView>
+	</StackLayout>
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

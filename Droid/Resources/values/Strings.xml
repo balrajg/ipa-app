@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="library_name">PagedCarouselPage.Android</string>
+	<string name="hello">Hello World, Click Me!</string>
+	<string name="app_name">SegmentedControl.Android.Android</string>
+
+	<string name="google_app_id">252105290987</string>
+</resources>

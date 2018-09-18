@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ClientReportPage" Title="">
+	<ContentPage.Icon>
+		<OnPlatform x:TypeArguments="FileImageSource"  Android="statistics.png" iOS="rating.png">
+		
+		</OnPlatform>
+	</ContentPage.Icon>
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="DropDownImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="9" />
+				<Setter Property="WidthRequest" Value="13" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="FilterImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="20" />
+				<Setter Property="WidthRequest" Value="20" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="HorizontalOptions" Value="End" />
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout Spacing="0" VerticalOptions="FillAndExpand" BackgroundColor="#EEEEEE">
+				<StackLayout Spacing="0" BackgroundColor="Teal">
+          
+					<RelativeLayout x:Name="RelativeStack" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+            <StackLayout RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=44}"
+           RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=100}">
+              <StackLayout   x:Name="selectCourseMenu"   HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" WidthRequest="100" Padding="10,12,10,10">
+                <Label x:Name="SelectCourseNameLabe" LineBreakMode="TailTruncation" Text="Select Course" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" VerticalTextAlignment="Center" FontSize="15" />
+
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding DropDownCmd}" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+            </StackLayout>
+						<StackLayout 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=44}" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=RelativeStack,Property=Width}">
+							<StackLayout Orientation="Horizontal" x:Name="CourseMenu"  HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" WidthRequest="110" Padding="10,10,10,10">
+								<Label x:Name="ProgramNameLabel" LineBreakMode="TailTruncation" Text="{Binding SelectedProgramName}" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" VerticalTextAlignment="Center" FontSize="13" />
+								<Image x:Name="DropDownImage" Source="drop_down.png" Style="{StaticResource DropDownImage}">
+								</Image>
+								<StackLayout.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding DropDownCmd}" />
+								</StackLayout.GestureRecognizers>
+							</StackLayout>
+						</StackLayout>
+						</RelativeLayout>
+						<ListView x:Name="ProgramNameList" 
+						ItemsSource="{Binding ProgramList}" 
+						SelectedItem="{Binding SelectedProgram, Mode=TwoWay}" 
+						SeparatorVisibility="None"
+						BackgroundColor="White"
+						HeightRequest="0"
+						RowHeight="30"
+						IsVisible="false">
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<ViewCell>
+										<ViewCell.View>
+											<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="20" Spacing="0" BackgroundColor="#c7d5ed">
+											<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0" HeightRequest="33" Spacing="0">
+												<Label  Text="{Binding ProgramName}" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#888888" HorizontalOptions="Fill" LineBreakMode="TailTruncation" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" FontSize="13" />
+												</StackLayout>
+												<StackLayout HorizontalOptions="FillAndExpand" Padding="0,0,0,0" Spacing="0">
+													<BoxView Style="{StaticResource BoxViewStyle}" />
+												</StackLayout>
+											</StackLayout>
+										</ViewCell.View>
+									</ViewCell>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+					</StackLayout>
+			<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+				<StackLayout Spacing="0" VerticalOptions="FillAndExpand" BackgroundColor="#3B495D">
+					<StackLayout Padding="10,10,0,10" HorizontalOptions="FillAndExpand" HeightRequest="18">
+				<Label Text="PROGRAM WISE REPORT" FontFamily="{x:Static local:Constants.FontStyle}" FontAttributes="Bold" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="#FFFFFF" FontSize="12" />
+			</StackLayout>
+			<ListView 
+			x:Name="ProgamReportList" 
+			ItemsSource="{Binding ReportList}" 
+			SeparatorVisibility="None" 
+			SelectedItem="{Binding SelectedReport, Mode=TwoWay}" 
+			HorizontalOptions="FillAndExpand" 
+			VerticalOptions="FillAndExpand"
+			RowHeight="240">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.View>
+							<local:ClientReportItemListView PreScore="{Binding PrescoreValue}" LapScore="{Binding Lapscore}"  PostScore="{Binding Postscore}" AttendancePercent="{Binding AttendancePercent}" CourseName="{Binding CourseName}" LearnerScore="{Binding L1score}" />
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+<!--			<local:ClientReportItemView   />-->
+				</StackLayout>
+			</ScrollView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

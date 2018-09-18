@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:Views="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ClientCourseDetailItemView">
+<ContentView.Resources>
+		<ResourceDictionary>
+		<OnPlatform x:TypeArguments="x:Int32" Android="58" iOS="52" x:Key="HeaderRowHeight" />
+
+		</ResourceDictionary>
+		</ContentView.Resources>
+
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#FFFFFF" Spacing="0">
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0" BackgroundColor="#EEEEEE" HeightRequest="33">
+				<Label Text="{Binding TotalParticipant}" Font="{x:Static local:Constants.FontStyle}" TextColor="#8A8A8A" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" FontSize="12" />
+			</StackLayout>
+			<ListView 
+				x:Name="ParticipantList" 
+				ItemsSource="{Binding ParticipantList}" 
+				SeparatorVisibility="None" 
+                RowHeight="{StaticResource HeaderRowHeight}"
+				BackgroundColor="White"
+				SelectedItem="{Binding SelectedReportee, Mode=TwoWay}" 
+				HorizontalOptions="FillAndExpand" 
+				VerticalOptions="Fill">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.View>
+								<Views:ParticipantItemView ParticipantSource="{Binding ProfileImage}" ParticipantName="{Binding FullName}" ParticipantId="{Binding EmpId}" />
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

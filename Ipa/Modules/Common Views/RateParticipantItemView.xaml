@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:Triggers="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.RateParticipantItemView">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="ButtonResponse" TargetType="Button">
+				<Setter Property="BackgroundColor" Value="#EEEEEE" />
+				<Setter Property="WidthRequest" Value="290" />
+				<Setter Property="HeightRequest" Value="48" />
+				<Setter Property="BorderRadius" Value="0" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="VerticalOptions" Value="CenterAndExpand" />
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="TextColor" Value="#787878" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+		<StackLayout  BackgroundColor="#FFFFFF" VerticalOptions="Fill">
+			<StackLayout  BackgroundColor="#FFFFFF" Padding="10,10,0,10">
+				<Label x:Name="Question" TextColor="#6F6F6F" FontSize="13" VerticalTextAlignment="Center" />
+				<StackLayout  x:Name="GoodLayout"  HorizontalOptions="FillAndExpand" Padding="10,10,10,10" Spacing="0">
+					<Button Text="Good" x:Name="GoodButton" Style="{StaticResource ButtonResponse}">
+					</Button>
+				</StackLayout>
+				<StackLayout x:Name="AverageLayout" HorizontalOptions="FillAndExpand" Padding="10,10,10,10" Spacing="0">
+					<Button Text="Average" x:Name="AverageButton" Style="{StaticResource ButtonResponse}">
+					</Button>
+				</StackLayout>
+				<StackLayout x:Name="PoorLayout" HorizontalOptions="FillAndExpand" Padding="10,10,10,10" Spacing="0">
+					<Button Text="Poor"  x:Name="PoorButton" Style="{StaticResource ButtonResponse}">
+					</Button>
+				</StackLayout>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0">
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

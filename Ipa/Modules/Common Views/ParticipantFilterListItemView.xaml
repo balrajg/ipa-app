@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:controls="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+x:Class="Ipa.ParticipantFilterListItemView">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="ProfileImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="30" />
+				<Setter Property="WidthRequest" Value="30" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" HeightRequest="44" BackgroundColor="#FFFFFF">
+			<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal"  Padding="10,10,10,10">
+				<ffimageloading:CachedImage x:Name="ProfileImage" Style="{StaticResource ProfileImage}" />
+				<Label x:Name="Name" Font="{x:Static local:Constants.FontStyle}" FontSize="13" TextColor="#2D2D2D" VerticalTextAlignment="Center" />
+				<controls:CheckBoxView x:Name="CheckBoxValue" HeightRequest="24" WidthRequest="24" HorizontalOptions="EndAndExpand" CheckedImage="select.png" UncheckedImage="checkbox_off.png" >
+				</controls:CheckBoxView>
+			</StackLayout>
+			<StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand">
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

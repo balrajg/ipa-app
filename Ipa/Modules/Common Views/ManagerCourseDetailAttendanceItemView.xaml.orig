@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:Views="clr-namespace:Mentor;assembly=Mentor" 
+x:Class="Mentor.ManagerCourseDetailAttendanceItemView">
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+<!--			<Label Text =" Thias is for testing this elemetn"></Label>-->
+			<!--				ItemsSource="{Binding AttendanceList}" -->
+			<ListView BackgroundColor ="Green"
+				x:Name="AttendanceList" 
+<<<<<<< HEAD
+				ItemsSource="{Binding AttendanceList}" 
+=======
+				ItemsSource="{Binding AttendanceListItems}"
+>>>>>>> 9f20232b0d57d09bd71ad2fe95aa382e8a10a3c4
+				SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+				SeparatorVisibility="None" 
+				RowHeight="55"
+				HorizontalOptions="FillAndExpand" 
+				VerticalOptions="FillAndExpand">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.View>
+<!--							<Label BackgroundColor="Teal">Ths is testing</Label>-->
+<!--								<local:AttendanceItemView ShowDay="Dy1" ShowDate="08 May" PresentStatus="8" AbsentStatus="2" BackgroundColor="Blue" />-->
+								<Views:AttendanceItemView ShowDay="{Binding ClassDay}" ShowDate="{Binding ClassDate}" PresentStatus="{Binding TotalPresent}" AbsentStatus="{Binding TotalAbsent}" />
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

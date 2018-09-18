@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:chat="clr-namespace:Chat.ChatHelper;assembly=Chat.ChatHelper.Views" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ChatRoomView">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+			<Style x:Key="ShowPwd" TargetType="Image">
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="WidthRequest" Value="20" />
+				<Setter Property="HeightRequest" Value="12" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="HorizontalOptions" Value="End" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="BackArrowImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="9" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+
+        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+          <StackLayout Orientation="Horizontal"  BackgroundColor="#ef0f0f" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,10,5,10">
+              <StackLayout HorizontalOptions="Start" Orientation="Horizontal" HeightRequest="25" WidthRequest="70" BackgroundColor="#485faa">
+                <StackLayout HorizontalOptions="Start"  Padding="8,0,0,0" VerticalOptions ="Center">
+                  <Image Source="back_arrow.png" Style="{StaticResource BackArrowImage}" />
+                  <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCmd}" />
+                  </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout HorizontalOptions="End" VerticalOptions ="Center" WidthRequest="50">
+                  <Label Text="BACK" TextColor="#FFFFFF" Font="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="14" />
+                  <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCmd}" />
+                  </StackLayout.GestureRecognizers>
+                </StackLayout>
+              </StackLayout>
+              <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="30,0,10,0">
+                <Label Text="{Binding RoomName}" Font="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" VerticalTextAlignment="Center" FontSize="14" />
+                <Label Text="{Binding MembersCount}" VerticalOptions="Center" Font="{x:Static local:Constants.FontStyle}" TextColor="#42C0FB" VerticalTextAlignment="Center" FontSize="12" />
+
+              </StackLayout>
+            </StackLayout>
+
+          </StackLayout>
+        </StackLayout>
+        
+								<StackLayout x:Name="ChatRoom"  VerticalOptions="FillAndExpand">
+				<StackLayout x:Name="ChatMessage"  VerticalOptions="FillAndExpand"></StackLayout>
+
+
+<!--					<chat:ChatListView x:Name ="ChatList" ItemsSource="{Binding Messages}">
+					</chat:ChatListView>
+					<StackLayout Orientation ="Horizontal" BackgroundColor="White">
+
+						<Entry Text="{Binding YourMessage}" Placeholder="Type your message here" HorizontalOptions="FillAndExpand">
+						</Entry>
+						<StackLayout BackgroundColor ="Transparent" HeightRequest="45" WidthRequest="45" HorizontalOptions="End" VerticalOptions="CenterAndExpand">
+							<Image VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Source="send.png">
+							</Image>
+							<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding SendCmd}"></TapGestureRecognizer>
+							</StackLayout.GestureRecognizers>
+						</StackLayout>
+
+					</StackLayout>-->
+				</StackLayout>
+			</StackLayout>
+
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+
+	</ContentPage.Content>
+</ContentPage>

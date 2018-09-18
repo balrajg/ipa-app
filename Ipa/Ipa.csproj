@@ -1,0 +1,283 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Modules\Notification\**" />
+    <EmbeddedResource Remove="Modules\Notification\**" />
+    <None Remove="Modules\Notification\**" />
+  </ItemGroup>
+
+ 
+
+  <ItemGroup>
+    <PackageReference Include="Acr.Settings" Version="9.0.1" />
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="CommonServiceLocator" Version="2.0.4" />
+    <PackageReference Include="DT.InsightsToHockey" Version="0.0.2" />
+    <PackageReference Include="FubarCoder.RestSharp.Portable.Core" Version="4.0.8" />
+    <PackageReference Include="FubarCoder.RestSharp.Portable.HttpClient" Version="4.0.8" />
+    <PackageReference Include="Microsoft.Bcl" Version="1.1.10" />
+    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="RestSharp" Version="106.3.1" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="4.0.0.190-beta" />
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.0.0.13" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.6-beta" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms.CarouselView" Version="2.3.0-pre2" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Custom Views\CheckBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Assessment\View\AssessmentAttemptPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Assessment\View\AssessmentAttemptSummaryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Assessment\View\AssessmentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Assessment\View\QuestionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Attendance\Mark Attendance\View\MarkAttendancePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Attendance\Rate Participant\View\RateParticipantPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ActivityItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\AddUserItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\AssessmentActivityItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\AssessmentFillUpsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\AssessmentMultipleChoiceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\AttendanceItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ButtonItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ClientCourseDetailAttendanceItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ClientCourseDetailItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ClientCourseItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\CourseActivityViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\CourseDetailActivityItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ListSeperator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\LoadingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ManagerCourseDetailAttendanceItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ManagerCourseDetailItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ManagerCourseItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ManagerHomeItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\MarkAttendanceItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\OrgItemListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\OverAllReportItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ParticipantCourseItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ParticipantFilterListItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ParticipantHomeItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ParticipantItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\PartnerAttendanceItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\PartnerCourseDetailAttendanceItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\PartnerCourseDetailItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\ProfileItemListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Common Views\RateParticipantItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Forum\ChatRoom\View\ChatRoomView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Forum\Views\ForumChatListItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Forum\Views\ForumPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Client\View\ClientCourseDetailAttendanceLookupPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Client\View\ClientCourseDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Client\View\ClientHomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Manager\view\ManagerAttendanceLookupPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Manager\view\ManagerCourseDetailActivityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Manager\view\ManagerCourseDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Manager\view\ManagerHomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Participant\View\ParticipantCourseDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Participant\View\ParticipantHomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Partner\Filter\FilterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Partner\View\AddUserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Partner\View\PartnerAttendanceLookupPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Partner\View\PartnerCourseDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\HomePage\Partner\View\PartnerHomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Login\ForgetPassword\View\ForgetPasswordPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Login\View\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Profile\View\ChangePwdPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Profile\View\EditProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Profile\View\SetupOrgPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Profile\View\SetupProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Profile\View\SetupUpdatePwdPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Client\View\ClientReportItemListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Client\View\ClientReportItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Client\View\ClientReportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Manager\Reports Filter\FilterReporteePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Manager\Reports Filter\ManagerFilterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Manager\View\ManagerReportItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Manager\View\ManagerReportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Manager\View\ParticipantReportView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Manager\View\ReportBatchwiseCompletionStatusPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Participant\View\ParticipantReportItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Reports\Participant\View\ParticipantReportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\settings\StaticPages\BrowserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\settings\StaticPages\HowthisAppWorksPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\settings\StaticPages\TermsAndConditionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\settings\View\SettingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\TabbedPageController\View\MotherPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\WalkThrough\View\WalkThroughScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\WalkThrough\View\WalkthroughView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+</Project>

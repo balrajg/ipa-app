@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:controls="clr-namespace:Ipa;assembly=Ipa"
+xmlns:local="clr-namespace:Ipa;assembly=Ipa"  
+xmlns:Views="clr-namespace:Ipa.Converters;assembly=Ipa"  
+x:Class="Ipa.ManagerFilterPage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+		<Views:NotConverter x:Key="dataHasBeenEntered" />
+			<Style x:Key="CloseImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+	<StackLayout Spacing="0" BackgroundColor="#EEEEEE" HorizontalOptions="FillAndExpand">
+		<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+			<StackLayout Orientation="Horizontal" BackgroundColor="#485faa" HorizontalOptions="FillAndExpand">
+				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				<StackLayout HorizontalOptions="Start" HeightRequest="25" WidthRequest="20" Padding="15,15,0,0">
+					<Image Source="close.png" Style="{StaticResource CloseImage}" />
+						<StackLayout.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding CloseCmd}" />
+						</StackLayout.GestureRecognizers>
+					</StackLayout>
+					<StackLayout HorizontalOptions="FillAndExpand" Padding="0,13,5,5">
+					<Label Text="Filter" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="18" TextColor="#FFFFFF" VerticalTextAlignment="Center" />
+					</StackLayout>
+				</StackLayout>
+				<StackLayout HorizontalOptions="End" Padding="10,15,10,10" HeightRequest="25" WidthRequest="40">
+				<Label Text="RESET" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" FontSize="12" VerticalTextAlignment="Center" />
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding ResetCmd}" />
+					</StackLayout.GestureRecognizers>
+				</StackLayout>
+			</StackLayout>
+		</StackLayout>
+		<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout Spacing="0" HorizontalOptions="FillAndExpand" BackgroundColor="#EEEEEE">
+				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="50" Padding="10,0,0,0" IsVisible="{Binding IsDualRole}">
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="6">
+					<controls:CheckBoxView HeightRequest="18" WidthRequest="18" IsChecked="{Binding IsMeSelected}" CheckedImage="radio_on.png" UncheckedImage="radio_off.png" />
+						<Label Text="Me" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#2D2D2D" FontSize="14" VerticalTextAlignment="Center" />
+					</StackLayout>
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="6">
+					<controls:CheckBoxView HeightRequest="18" WidthRequest="18" IsChecked="{Binding IsReporteeSelected}" CheckedImage="radio_on.png" UncheckedImage="radio_off.png" />
+						<Label Text="Reportees" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#2D2D2D" FontSize="14" VerticalTextAlignment="Center" />
+					</StackLayout>
+				</StackLayout>
+				<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding FilterName}" BackgroundColor="#FFFFFF" Padding="10,0,0,0">
+					<Label Text="Filter Reportees By Name" FontFamily="{x:Static local:Constants.FontStyle}" IsEnabled="{Binding IsEnabled}" TextColor="#2D2D2D" HeightRequest="47" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" FontSize="13" >
+					</Label>
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding FilterReporteeNameCmd}" />
+					</StackLayout.GestureRecognizers>
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

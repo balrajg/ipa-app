@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa"
+x:Class="Ipa.AssessmentActivityItemView">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="StatusImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="10" />
+				<Setter Property="WidthRequest" Value="11" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#485faa" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+			<StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#FFFFFF" HeightRequest="44" Padding="10,10,10,10">
+				<Label x:Name="Activityname" TextColor="#2D2D2D" FontFamily="{x:Static local:Constants.FontStyle}"  VerticalTextAlignment="Center" FontSize="13" />
+				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+					<StackLayout Orientation="Horizontal" IsVisible="{Binding CanShowCompleted}" x:Name="CompletedActivity"  HorizontalOptions="FillAndExpand">
+						<Image Source="completed.png"  Style="{StaticResource StatusImage}" />
+						<Label x:Name="CompletedText" VerticalTextAlignment="Center" FontFamily="{x:Static local:Constants.FontStyle}"  FontSize="11" TextColor="#777777" />
+					</StackLayout>
+					<StackLayout x:Name="PendingActivity" IsVisible="{Binding CanShowPending}" Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+						<Image Source="pending.png"  Style="{StaticResource StatusImage}" />
+						<Label x:Name="PendingText" VerticalTextAlignment="Center" FontFamily="{x:Static local:Constants.FontStyle}"  FontSize="11" TextColor="#777777" />
+					</StackLayout>
+					<StackLayout Orientation="Horizontal" IsVisible="{Binding CanShowOverdue}" x:Name="OverdueActivity" HorizontalOptions="FillAndExpand">
+						<Image Source="over_due.png"  Style="{StaticResource StatusImage}" />
+						<Label x:Name="OverdueText" VerticalTextAlignment="Center" FontFamily="{x:Static local:Constants.FontStyle}"  FontSize="11" TextColor="#777777" />
+					</StackLayout>
+				</StackLayout>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0">
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

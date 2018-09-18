@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa"
+xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+xmlns:Views="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.SetupProfilePage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout Spacing="0" BackgroundColor="#FFFFFF" VerticalOptions="FillAndExpand">
+			<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50">
+					<StackLayout Orientation="Horizontal" BackgroundColor="#ef0f0f">
+					<StackLayout HorizontalOptions="FillAndExpand" Padding="10,10,10,0">
+						<Label Text="Update Profile" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" VerticalTextAlignment="Center" FontSize="18" />
+						</StackLayout>
+						<StackLayout HorizontalOptions="End" Padding="10,15,10,10" HeightRequest="25" WidthRequest="35">
+				<Label Text="NEXT" TextColor="#FFFFFF" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="12" />
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding NextCmd}" />
+					</StackLayout.GestureRecognizers>
+				</StackLayout>
+					</StackLayout>
+				</StackLayout>
+				<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+					<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="#FFFFFF">
+						<StackLayout HorizontalOptions="FillAndExpand">
+							<RelativeLayout HeightRequest="180" x:Name="RelativeLayout">
+								<Image x:Name="BgImage" Source="{Binding ProfileImage}" HorizontalOptions="FillAndExpand" Aspect="AspectFill" 
+								RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=180}" 
+								RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,ElementName=RelativeLayout,Property=Width}">
+								</Image>
+								<BoxView BackgroundColor="Black" Opacity="0.2" 
+								RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=180}" 
+								RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,ElementName=RelativeLayout,Property=Width}"></BoxView>
+								<controls:CircleImage x:Name="ProfileImage" Source="{Binding ProfileImage}" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Aspect="AspectFill" 
+								RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5,Constant=-40}" 
+								RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-40}" 
+								RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=80}" 
+								RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=80}">
+								</controls:CircleImage>
+								<Label x:Name="ChangePhoto" Text="CHANGE PHOTO" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" FontSize="11" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" 
+								RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5,Constant=-60}" 
+								RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=40}"
+									RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=40}" 
+									RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=120}">
+								</Label>
+							</RelativeLayout>
+						</StackLayout>
+						<Views:ProfileItemListView />
+					</StackLayout>
+				</ScrollView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

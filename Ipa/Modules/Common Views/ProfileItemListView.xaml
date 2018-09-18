@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:Controls="clr-namespace:Ipa.Behaviors;assembly=Ipa" 
+x:Class="Ipa.ProfileItemListView">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="ProfileInfo" TargetType="Entry">
+				<Setter Property="VerticalOptions" Value="Fill" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="FontSize" Value="14" />
+				<Setter Property="HeightRequest" Value="40" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="#FFFFFF">
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,30,10,20">
+				<local:MyEntry Placeholder="First Name" x:Name="Fname" Text="{Binding FristName}" Keyboard="Text" Style="{StaticResource ProfileInfo}">
+					<local:MyEntry.Behaviors>
+						<Controls:MaxLimitBehavior />
+					</local:MyEntry.Behaviors>
+				</local:MyEntry>
+				<BoxView Style="{StaticResource BoxViewStyle}" BackgroundColor="#485faa">
+				</BoxView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,10,20">
+				<local:MyEntry Placeholder="Surname" x:Name="SName" Keyboard="Text" Text="{Binding SurName}" Style="{StaticResource ProfileInfo}">
+					<local:MyEntry.Behaviors>
+						<Controls:MaxLimitBehavior />
+					</local:MyEntry.Behaviors>
+				</local:MyEntry>
+				<BoxView Style="{StaticResource BoxViewStyle}" BackgroundColor="#485faa">
+				</BoxView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,10,20">
+				<local:MyEntry Placeholder="Mobile Number" x:Name="MobNumber" Keyboard="Telephone" Text="{Binding MobileNumber}" Style="{StaticResource ProfileInfo}">
+					<local:MyEntry.Behaviors>
+						<Controls:NumberValidatorBehavior />
+						<local:MaxLengthValidator MaxLength="10" />
+					</local:MyEntry.Behaviors>
+				</local:MyEntry>
+				<BoxView Style="{StaticResource BoxViewStyle}" BackgroundColor="#485faa">
+				</BoxView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,10,20">
+				<local:MyEntry Placeholder="Mail ID"  IsEnabled="false" Keyboard="Email" x:Name="Email" Text="{Binding MailId,Mode=OneWay}" Style="{StaticResource ProfileInfo}">
+					<local:MyEntry.Behaviors>
+						<Controls:EmailValidatorBehavior />
+					</local:MyEntry.Behaviors>
+				</local:MyEntry>
+				<BoxView Style="{StaticResource BoxViewStyle}" BackgroundColor="#485faa">
+				</BoxView>
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

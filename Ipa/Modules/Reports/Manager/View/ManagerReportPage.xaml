@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:Views="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ManagerReportPage" Title="">
+	<ContentPage.Icon>
+		<OnPlatform x:TypeArguments="FileImageSource"  Android="statistics.png" iOS="rating.png">
+
+		</OnPlatform>
+	</ContentPage.Icon>
+	<ContentPage.Padding>
+	<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+		<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1"></Setter>
+				<Setter Property="BackgroundColor" Value="#485faa"></Setter>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+			</Style>
+			<Style x:Key="DropDownImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="9" />
+				<Setter Property="WidthRequest" Value="13" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="EndAndExpand" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="SearchText" TargetType="Label">
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="TextColor" Value="#B8B8B8" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="HorizontalTextAlignment" Value="Start" />
+			</Style>
+			<Style x:Key="FilterImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="20" />
+				<Setter Property="WidthRequest" Value="20" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="EndAndExpand" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout Spacing="0" VerticalOptions="FillAndExpand" BackgroundColor="#EEEEEE">
+				<StackLayout Spacing="0" HorizontalOptions="FillAndExpand" BackgroundColor="#EEEEEE">
+					<RelativeLayout x:Name="RelativeStack" HorizontalOptions="FillAndExpand" BackgroundColor="#3B495D" VerticalOptions="Fill">
+            <StackLayout RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=44}"
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=100}">
+              <StackLayout   x:Name="selectCourseMenu"   HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" WidthRequest="100" Padding="10,12,10,10">
+                <Label x:Name="SelectCourseNameLabe" LineBreakMode="TailTruncation" Text="Select Course" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" VerticalTextAlignment="Center" FontSize="15" />
+                
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding DropDownCmd}" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+            </StackLayout>
+            
+						<StackLayout 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=44}" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=RelativeStack,Property=Width}">
+							<StackLayout Orientation="Horizontal"  x:Name="CourseMenu" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" WidthRequest="110" Padding="10,10,10,10">
+                <Label x:Name="CourseNameLabel" LineBreakMode="TailTruncation" Text="{Binding SelectedCourseName}" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" VerticalTextAlignment="Center" FontSize="13" />
+								<Image x:Name="DropDownImage" Source="drop_down.png" Style="{StaticResource DropDownImage}">
+								</Image>
+								<StackLayout.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding DropDownCmd}" />
+								</StackLayout.GestureRecognizers>
+							</StackLayout>
+						</StackLayout>
+						<StackLayout  Padding="10,10,10,10" 
+						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Constant=-40}" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=44}"
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=40}">
+							<Image Source="filter1.png" x:Name="FilterSource" Style="{StaticResource FilterImage}" />
+							<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding FilterCmd}" />
+							</StackLayout.GestureRecognizers>
+						</StackLayout>
+					</RelativeLayout>
+					<ListView x:Name="CourseNameList" 
+					ItemsSource="{Binding DropDownList}" 
+					SelectedItem="{Binding SelectedCourse, Mode=TwoWay}" 
+					BackgroundColor="#FFFFFF"
+					HeightRequest="0"
+					RowHeight="30"
+					IsVisible="true"
+					SeparatorVisibility="None">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<ViewCell.View>
+									<StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#c7d5ed" HeightRequest="20" Spacing="0">
+											<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0" HeightRequest="33" Spacing="0">
+												<Label  Text="{Binding CourseShortName}" LineBreakMode="TailTruncation" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#888888" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" FontSize="13" />
+												</StackLayout>
+												<StackLayout HorizontalOptions="FillAndExpand" Padding="0,0,0,0" Spacing="0">
+													<BoxView Style="{StaticResource BoxViewStyle}" />
+												</StackLayout>
+											</StackLayout>
+									</ViewCell.View>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+				</StackLayout>
+					<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+						<StackLayout Spacing="0" VerticalOptions="FillAndExpand">
+							<Views:ManagerReportItemView />
+						</StackLayout>
+					</ScrollView>
+			</StackLayout>
+			<StackLayout Spacing="0" VerticalOptions="FillAndExpand" BackgroundColor="#EEEEEE" IsVisible="{Binding IsMeSelected}">
+							<StackLayout Spacing="0" VerticalOptions="FillAndExpand" BackgroundColor="#EEEEEE">
+
+				<RelativeLayout x:Name="RelativeStackLayout" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+						<StackLayout BackgroundColor="#000000" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=44}" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=RelativeStackLayout,Property=Width}">
+							<StackLayout Orientation="Horizontal" x:Name="CourseNameMenu"  HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" WidthRequest="110" Padding="10,10,10,10" >
+								<Label x:Name="CourseLabel" LineBreakMode="TailTruncation" Text="{Binding SelectCourseName}" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#FFFFFF" VerticalTextAlignment="Center" FontSize="13" />
+								<Image x:Name="DropImage" Source="drop_down.png" Style="{StaticResource DropDownImage}">
+								</Image>
+								<StackLayout.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding DropDownCmd}" />
+								</StackLayout.GestureRecognizers>
+							</StackLayout>
+						</StackLayout>
+						<StackLayout  Padding="10,10,10,10" 
+						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Constant=-40}" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=44}"
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=40}">
+							<Image Source="filter1.png" x:Name="Filter" Style="{StaticResource FilterImage}" />
+							<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding FilterCmd}" />
+							</StackLayout.GestureRecognizers>
+						</StackLayout>
+						</RelativeLayout>
+						<ListView x:Name="CourseList" 
+						ItemsSource="{Binding DropList}" 
+						SelectedItem="{Binding SelectCourse, Mode=TwoWay}" 
+						HeightRequest="0"
+						RowHeight="30"
+						IsVisible="false"
+						BackgroundColor="#FFFFFF"
+						SeparatorVisibility="None">
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<ViewCell>
+										<ViewCell.View>
+										<StackLayout HorizontalOptions="FillAndExpand" HeightRequest="20" Spacing="0" BackgroundColor="#FFFFFF">
+											<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0" HeightRequest="33" Spacing="0">
+												<Label  Text="{Binding CourseShortName}" LineBreakMode="TailTruncation" BackgroundColor="#FFFFFF" FontFamily="{x:Static local:Constants.FontStyle}" TextColor="#485faa" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" FontSize="13" />
+												</StackLayout>
+												<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0" Spacing="0">
+													<BoxView Style="{StaticResource BoxViewStyle}" />
+												</StackLayout>
+											</StackLayout>
+										</ViewCell.View>
+									</ViewCell>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+						</StackLayout>
+						<ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+							<StackLayout Spacing="0" VerticalOptions="FillAndExpand" BackgroundColor="#3B495D">
+					<Views:ParticipantReportItemView />
+				</StackLayout>
+			</ScrollView>
+			</StackLayout>
+
+
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">	
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

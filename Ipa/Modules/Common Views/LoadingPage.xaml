@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:local="clr-namespace:Ipa;assembly=Ipa"
+xmlns:Controls="clr-namespace:Ipa.Behaviors;assembly=Ipa"
+xmlns:Views="clr-namespace:Ipa;assembly=Ipa"
+x:Class="Ipa.LoadingPage">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0">
+		</OnPlatform>
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+      <StackLayout HorizontalOptions="FillAndExpand">
+        <StackLayout HorizontalOptions="FillAndExpand" Padding="20,80,20,20">
+                    <Image Source="logo_login.png"   Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+        </StackLayout>
+        
+        
+        <StackLayout Orientation="Vertical" VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="50,80,50,50" Spacing="0">
+          <ActivityIndicator VerticalOptions="Center" IsRunning="True" HorizontalOptions="FillAndExpand"  HeightRequest="60" WidthRequest="60" Color="#485faa"> </ActivityIndicator>
+        </StackLayout>
+      </StackLayout>
+      
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

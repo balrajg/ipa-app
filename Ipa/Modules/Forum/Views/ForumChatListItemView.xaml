@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+x:Class="Ipa.ForumChatListItemView">
+<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="ProfileImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="30" />
+				<Setter Property="WidthRequest" Value="30" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="BoxViewStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="BackgroundColor" Value="#D6D6D6" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+<!--				<OnPlatform x:TypeArguments="x:Double" Android="83"  iOS="80" x:Key="HeaderRowHeight" />-->
+			</ResourceDictionary>
+			</ContentView.Resources>
+	<ContentView.Content>
+<!--	HeightRequest="{StaticResource HeaderRowHeight}"-->
+		<StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#FFFFFF"  Spacing="0">
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,10,10,10">
+				<Label x:Name="courseName" Text="{Binding RoomName}" VerticalTextAlignment="Center" FontAttributes="Bold" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="13" TextColor="#2D2D2D" HorizontalOptions="FillAndExpand" LineBreakMode="TailTruncation"/>
+				<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="10">
+					<ffimageloading:CachedImage x:Name="profileImage" Style="{StaticResource ProfileImage}" Source="{Binding LastUserImage}"/>
+					<StackLayout HorizontalOptions="FillAndExpand">
+						<Label x:Name="participantName" Text="{Binding LastUserName}" VerticalTextAlignment="Center" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="13" TextColor="#000000" HorizontalOptions="FillAndExpand" FontAttributes="Bold" LineBreakMode="TailTruncation"/>
+					
+					<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+					<Label x:Name="messageText" Text="{Binding LastMessage}" VerticalTextAlignment="Center" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="11" TextColor="#656565" HorizontalOptions="Start" LineBreakMode="TailTruncation"/>
+					<Label x:Name="timeDescription" Text="{Binding LastMessageTime}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" FontFamily="{x:Static local:Constants.FontStyle}" FontSize="11" TextColor="#B2B2B2" />
+					</StackLayout>
+				</StackLayout></StackLayout>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0">
+				<BoxView Style="{StaticResource BoxViewStyle}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

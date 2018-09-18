@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:Views="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.AssessmentAttemptPage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0"></OnPlatform>
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="CloseImage" TargetType="Image">
+				<Setter Property="HeightRequest" Value="16" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" BackgroundColor="#FFFFFF">
+				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="#485faa" Spacing="0">
+				<StackLayout HorizontalOptions="Start" HeightRequest="25" WidthRequest="20" Padding="15,15,10,10">
+					<Image Source="close.png" Style="{StaticResource CloseImage}" />
+						<StackLayout.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding CloseBtnCmd}" />
+						</StackLayout.GestureRecognizers>
+					</StackLayout>
+					<StackLayout HorizontalOptions="FillAndExpand" Padding="0,5,0,5">
+						<Label Text="{Binding ActivityName}" TextColor="#FFFFFF" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="18" />
+						<Label Text="{Binding QuestionIndicator}" TextColor="#42C0FB" FontFamily="{x:Static local:Constants.FontStyle}" VerticalTextAlignment="Center" FontSize="12" />
+					</StackLayout>
+					<StackLayout HorizontalOptions="EndAndExpand"  HeightRequest="25" WidthRequest="35">
+					<StackLayout.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,12,5,0" Android="10,15,10,10"></OnPlatform>
+	</StackLayout.Padding>
+                <Label Text="DONE" IsVisible="{Binding IsDone}" TextColor="#FFFFFF" FontFamily="{x:Static local:Constants.FontStyle}" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="11" />					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding DoneCmd}" />
+					</StackLayout.GestureRecognizers>
+				</StackLayout>
+				</StackLayout>
+				<local:QuestionView Type="{Binding QuestionType}"></local:QuestionView>
+			</StackLayout>
+			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.3">
+				<ActivityIndicator HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White">
+					<ActivityIndicator.HorizontalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">
+			
+						</OnPlatform>
+					</ActivityIndicator.HorizontalOptions>
+					<ActivityIndicator.VerticalOptions>
+						<OnPlatform x:TypeArguments="LayoutOptions" Android="CenterAndExpand" iOS="FillAndExpand">
+					
+						</OnPlatform>
+					</ActivityIndicator.VerticalOptions>
+				</ActivityIndicator>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

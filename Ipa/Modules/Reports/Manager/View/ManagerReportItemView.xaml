@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:Views="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ManagerReportItemView">
+	<ContentView.Content>
+		<StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+			<StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand" HeightRequest="38" BackgroundColor="#485faa">
+				<Label Text="SUMMARY SCORE CARD" FontFamily="{x:Static local:Constants.FontStyle}" FontAttributes="Bold" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="#FFFFFF" FontSize="12" />
+			</StackLayout>
+      <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <ListView
+        x:Name="OverallReportList"
+        ItemsSource="{Binding ReporteeList}"
+        SelectedItem="{Binding SelectedReport,Mode=TwoWay}"
+        SeparatorVisibility="None"
+        HorizontalOptions="FillAndExpand"
+        RowHeight="98"
+        BackgroundColor="#FFFFFF" HeightRequest="500"
+        VerticalOptions="FillAndExpand"
+      >
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <ViewCell.View>
+                  <Views:OverAllReportItemView ParticipantSource="{Binding ProfileImage}" ParticipantName="{Binding FullName}" L2BeliefAssessment="{Binding L2BChangeOnPotential}" L2SkillAssessment="{Binding L2SkillAssessment}" />
+                </ViewCell.View>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </ScrollView>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

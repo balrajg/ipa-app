@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Button 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:Triggers="clr-namespace:Ipa;assembly=Ipa" 
+xmlns:local="clr-namespace:Ipa;assembly=Ipa" 
+x:Class="Ipa.ButtonItemView"
+Style="{StaticResource ButtonResponse}">
+	<Button.Resources>
+		<ResourceDictionary>
+			<Style x:Key="ButtonResponse" TargetType="Button">
+				<Setter Property="BackgroundColor" Value="#EEEEEE" />
+				<Setter Property="WidthRequest" Value="290" />
+				<Setter Property="HeightRequest" Value="48" />
+				<Setter Property="BorderRadius" Value="0" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="VerticalOptions" Value="CenterAndExpand" />
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="TextColor" Value="#787878" />
+				<Setter Property="FontFamily" Value="{x:Static local:Constants.FontStyle}" />
+			</Style>
+		</ResourceDictionary>
+	</Button.Resources>
+<!--	<ContentView.Content>
+		<Button x:Name="Options" Command="{Binding AnswerCmd}" Style="{StaticResource ButtonResponse}">
+			<Button.Triggers>
+				<EventTrigger Event="Clicked">
+					<Triggers:ButtonClickedTriggerAction />
+				</EventTrigger>
+			</Button.Triggers>
+		</Button>
+	</ContentView.Content>-->
+</Button>
