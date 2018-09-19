@@ -171,6 +171,8 @@
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\ipad_splash2_2x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\loginBG.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\loginBG.imageset\loginBG.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -203,5 +205,8 @@
       <Project>{B15C4ADF-882C-4597-B065-633F6E948B4E}</Project>
       <Name>Ipa</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Images.xcassets\loginBG.imageset\" />
   </ItemGroup>
 </Project>
