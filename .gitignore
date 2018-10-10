@@ -6,6 +6,7 @@
 [Bb]in/
 packages/
 TestResults/
+.vs/
 
 # globs
 Makefile.in
@@ -35,6 +36,7 @@ Thumbs.db
 #resharper
 *_Resharper.*
 *.Resharper
+
 
 #dotCover
 *.dotCover

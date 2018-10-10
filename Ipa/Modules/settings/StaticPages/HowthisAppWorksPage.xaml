@@ -51,7 +51,7 @@ xmlns:local="clr-namespace:Ipa;assembly=Ipa"
         </StackLayout>
       </StackLayout>
 	<!-- Web Content -->
-			<WebView x:Name="Browser" VerticalOptions="FillAndExpand" Source="https://www.impact-enablers.com/how-to-use-app.html">
+                <WebView x:Name="Browser" VerticalOptions="FillAndExpand" Source="https://www.impact-enablers.com/privacy.php">
 				
 			</WebView>
 		</StackLayout>

@@ -112,7 +112,7 @@ x:Class="Ipa.SettingPage" x:Name="Setting" Title=""  >
 					</StackLayout>
           <BoxView Style="{StaticResource BoxViewStyle}" />
 					<StackLayout Style="{StaticResource SettingList}">
-						<Label Text="How this App Works?" Style="{StaticResource Setting}" />
+						<Label Text="Privacy Policy" Style="{StaticResource Setting}" />
 						<StackLayout.GestureRecognizers>
 						<TapGestureRecognizer Command="{Binding HowAppWorkCmd}" />
 					</StackLayout.GestureRecognizers>

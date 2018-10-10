@@ -49,7 +49,7 @@
 	</StackLayout>
 </StackLayout>
 	<!-- Web Content -->
-			<WebView x:Name="Browser" VerticalOptions="FillAndExpand" Source="https://www.impact-enablers.com/terms-of-use.html">
+                <WebView x:Name="Browser" VerticalOptions="FillAndExpand" Source="https://www.impact-enablers.com/terms.php">
 				
 			</WebView>
 		</StackLayout>

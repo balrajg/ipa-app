@@ -72,7 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
   </ItemGroup>
- <ItemGroup>
+  <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -151,8 +151,6 @@
     <ImageAsset Include="Resources\Images.xcassets\OthersChatBg.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-
-	
     <ImageAsset Include="Resources\Images.xcassets\MyChatBg.imageset\my9img%402x.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -171,8 +169,12 @@
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\ipad_splash2_2x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\loginBG.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\loginBG.imageset\loginBG.png" />
+    <ImageAsset Include="Resources\Images.xcassets\loginBG.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\loginBG.imageset\loginBG.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
